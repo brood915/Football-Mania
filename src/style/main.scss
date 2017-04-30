@@ -1,0 +1,12 @@
+@mixin colorBlue () {
+	color: blue;
+}
+
+body {
+	@include colorBlue ();
+
+}
+
+.test {
+	border: red 1px solid;
+}
