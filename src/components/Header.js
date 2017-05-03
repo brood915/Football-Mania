@@ -6,7 +6,8 @@ import {
   Link
 } from 'react-router-dom';
 
-const Layout = () => (
+const Header = () => (
+	<div>
 	<Navbar inverse collapseOnSelect>
 	    <Navbar.Header>
 			<Navbar.Brand>
@@ -24,7 +25,8 @@ const Layout = () => (
 	    </Nav>
 	    </Navbar.Collapse>
  	</Navbar>
+ 	</div>
 )
 
 
-export default Layout;
+export default Header;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Tournaments = () => (
-  <div>
+  <div className='mainContent'>
     <h2>Tournaments</h2>
   </div>
 )
