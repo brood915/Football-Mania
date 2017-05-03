@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Saved = () => (
-  <div>
+  <div className='mainContent'>
     <h2>Saved</h2>
   </div>
 )
