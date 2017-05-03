@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer, IndexLinkContainer }from 'react-router-bootstrap';
-
+import { LinkContainer, IndexLinkContainer } from 'react-router-bootstrap';
+import FontAwesome from 'react-fontawesome';
 import {
   Link
 } from 'react-router-dom';
@@ -11,7 +11,13 @@ const Header = () => (
 	<Navbar inverse collapseOnSelect>
 	    <Navbar.Header>
 			<Navbar.Brand>
-	        	<Link to="/">Football Mania</Link>
+	        	<Link to="/">
+	        		Football Mania		
+	        		<FontAwesome className = 'football'
+				        name='soccer-ball-o'
+				        size='1x'
+				        spin />
+        		</Link>
 	     	 </Navbar.Brand>
 	     	 <Navbar.Toggle />
 	    </Navbar.Header>
