@@ -3,15 +3,12 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import app from './reducers/reducers';
-
 import Layout from './containers/Layout';
 import Home from './containers/Home';
 import Leagues from './containers/Leagues'; 
 import Tournaments from './containers/Tournaments';
 import Players from './containers/Players';
 import Saved from './containers/Saved';
-
-
 
 import {
   BrowserRouter as Router,

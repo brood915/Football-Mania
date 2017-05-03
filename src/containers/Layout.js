@@ -1,20 +1,29 @@
 import React from 'react';
+import { Button, Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer, IndexLinkContainer }from 'react-router-bootstrap';
 
 import {
   Link
 } from 'react-router-dom';
 
 const Layout = () => (
-    <div>
-          <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/leagues">Leagues</Link></li>
-        <li><Link to="/tournaments">Tournaments</Link></li>
-        <li><Link to="/players">Players</Link></li>
-        <li><Link to="/saved">Saved</Link></li>
-      </ul>
-    </div>
-
+	<Navbar inverse collapseOnSelect>
+	    <Navbar.Header>
+			<Navbar.Brand>
+	        	<Link to="/">Football Mania</Link>
+	     	 </Navbar.Brand>
+	     	 <Navbar.Toggle />
+	    </Navbar.Header>
+	    <Navbar.Collapse>
+	    <Nav>
+	      <IndexLinkContainer to="/"><NavItem>Home</NavItem></IndexLinkContainer>
+	      <LinkContainer to="/leagues"><NavItem>Leagues</NavItem></LinkContainer>
+	      <LinkContainer to="/tournaments"><NavItem>Tournaments</NavItem></LinkContainer>
+	      <LinkContainer to="/players"><NavItem>Players</NavItem></LinkContainer>
+	      <LinkContainer to="/saved"><NavItem>Saved</NavItem></LinkContainer>
+	    </Nav>
+	    </Navbar.Collapse>
+ 	</Navbar>
 )
 
 

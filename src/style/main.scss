@@ -1,12 +1,50 @@
-@mixin colorBlue () {
-	color: blue;
+body, html {
+	margin: 0;
+	padding: 0;
 }
 
-body {
-	@include colorBlue ();
+
+
+/*****
+navbar
+******/
+
+.navbar {
+	background-color: black;
+	font-weight: bold;
+	border-radius: 0;
+
+	.navbar-brand {
+		color: white;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+.navbar-nav li {
+
+	a {
+		color: white !important;
+		text-align: center;
+	}
+
+	&:hover {
+		opacity: 0.8;
+	}
 
 }
 
-.test {
-	border: red 1px solid;
+.navbar-nav .active a {
+	background-color: white !important;
+	color: black !important;
+}
+
+
+/*****
+media queries
+******/
+@media screen and (min-width: 768px) {
+
+   
 }
