@@ -1,7 +1,8 @@
 # Website for Football Fans
 
 ```
-Allows users to search for league/tournament tables, and players' stats, and save them to the local storage so they can see what they want all at once on the same page.
+Allows users to search for league/tournament tables and players' stats, 
+and to save them to the local storage so they can see what they want all at once on the same page.
 
 [[Plans for the future]]
 Add authorization
