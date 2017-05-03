@@ -1,18 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Link
-} from 'react-router-dom';
+
 const Home = () => (
-<div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/leagues">Leagues</Link></li>
-        <li><Link to="/tournaments">Tournaments</Link></li>
-        <li><Link to="/players">Players</Link></li>
-        <li><Link to="/saved">Saved</Link></li>
-      </ul>
-    </div>
+	<div>
+		<h2>Home</h2>
+	</div>
 )
 
 export default Home;
