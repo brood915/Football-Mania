@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
-  entry: ['./index.js', './style/main.scss'],
+  entry: ['whatwg-fetch', './index.js', './style/main.scss'],
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
