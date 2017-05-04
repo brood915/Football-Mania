@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
-  entry: ['./index.js', './style/main.scss'],
+  entry: ['whatwg-fetch', './index.js', './style/main.scss'],
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
@@ -38,7 +38,12 @@ module.exports = {
                   fallback:'style-loader',
                   use: ['css-loader','sass-loader', 'postcss-loader']
                 }),
+      },
+      {
+          test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+          use: 'file-loader?name=[name].[ext]'  // <-- retain original file name
       }
+
     ]
   },
   devServer: {
@@ -47,7 +52,7 @@ module.exports = {
   port: 1337
 },
   plugins: [
-    new HtmlWebpackPlugin({template: './index.html'}),
+    new HtmlWebpackPlugin({template: './index.html',  favicon: './imgs/favicon.ico'}),
     new ExtractTextPlugin({ // define where to save the file
       filename: 'bundle.css',
       allChunks: true,

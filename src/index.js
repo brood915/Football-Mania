@@ -11,6 +11,7 @@ import Tournaments from './containers/Tournaments';
 import Players from './containers/Players';
 import Saved from './containers/Saved';
 
+
 import {
   BrowserRouter as Router,
   Route,
@@ -26,12 +27,12 @@ ReactDOM.render(
     		<div id="main">
     		<Route component = {Header} />
     		<Switch id='mainContent'>
-    		<Route exact path="/" component={Home}/>
+    		  <Route exact path="/" component={Home}/>
       		<Route path="/leagues" component={Leagues}/>
       		<Route path="/tournaments" component={Tournaments}/>
       		<Route path="/players" component={Players}/>
       		<Route path="/saved" component={Saved}/>
-      		</Switch>
+      	</Switch>
         <Route component = {Footer} />
       		</div>
       	</Router>
