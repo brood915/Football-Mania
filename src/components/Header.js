@@ -15,7 +15,6 @@ const Header = () => (
 	        		Football Mania		
 	        		<FontAwesome className = 'football'
 				        name='soccer-ball-o'
-				        size='1x'
 				        spin />
         		</Link>
 	     	 </Navbar.Brand>
