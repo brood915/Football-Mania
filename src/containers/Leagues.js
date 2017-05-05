@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import Leagues_Table from '../components/Leagues_Table';
 
 const Leagues = (props) => (  
 		  <div className='mainContent'>
@@ -18,8 +19,8 @@ const Leagues = (props) => (
 					</FormControl>
 				</FormGroup>
       		</form>
-      		<Button onClick = {()=>props.getData('competitions/' + props.league + '/leagueTable')} bsStyle='primary'>Get the table!</Button>
-      		<div>{props.data.matchday}</div>
+      		<Button onClick = {()=>props.getData('competitions/' + props.league + '/leagueTable')}>Get the table!</Button>
+      		<Leagues_Table data = {props.data} />
 		  </div>
 	  );
 

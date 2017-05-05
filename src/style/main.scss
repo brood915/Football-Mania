@@ -28,6 +28,28 @@ body, html, #app, #main {
 	flex-direction: column;
 }
 
+.dataContainer {
+	margin-top: 40px;
+}
+
+/*****
+form, btns
+******/
+
+.form-group {
+	margin-top: 15px;
+}
+
+.btn {
+	font-weight: bold;
+	background-color: #000000;
+	color: #FFFFFF;
+	&:hover, &:focus {
+		color: #FFFFFF;
+	    background-color: #222222;
+	    border-color: #333333;
+	}
+}
 
 /*****
 navbar
