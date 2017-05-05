@@ -15,7 +15,8 @@ class MainContainer extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-    	
+    	data: [],
+    	league:0
     	}
     this.getData = this.getData.bind(this);
 	}
@@ -27,20 +28,22 @@ class MainContainer extends React.Component {
   			}
 		})
 		.then((response) => response.json())
-		.then((json) => console.log(json[1].caption))
+		.then((json) => this.setState({data: json}))
+		.then(()=>console.log(this.state.data))
 		.catch((err) => console.log('Could not fetch the data!', err)
   		)
 	}
 
-	haha () {
-		console.log('haha');
+	getLeague (e) {
+		this.setState({league: Number(e.target.value)});
 	}
+	
 
 render() {
   return(<div id="main">
         <Header />
         <Route exact path="/" component={Home}/>
-        <Route path="/leagues" render={()=><Leagues getData = {this.getData}/>}/>
+        <Route path="/leagues" render={()=><Leagues league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
         <Route path="/tournaments" render={()=><Tournaments getData = {this.getData}/>}/>
         <Route path="/players" render={()=><Players getData = {this.getData}/>}/>
         <Route path="/saved" component={Saved}/>

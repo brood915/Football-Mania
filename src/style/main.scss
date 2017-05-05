@@ -24,9 +24,9 @@ body, html, #app, #main {
 .mainContent {
 	min-height: 100%;
 	@include center ();
+	justify-content: flex-start;
+	flex-direction: column;
 }
-
-
 
 
 /*****
