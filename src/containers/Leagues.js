@@ -9,7 +9,7 @@ const Leagues = (props) => (
 				<FormGroup controlId="formControlsSelect">
       				<ControlLabel>Select a league</ControlLabel>
       				<FormControl componentClass="select" placeholder="select">
-      					<option selected='selected'>Find your league!</option>
+      					<option defaultValue>Find your league!</option>
 				        <option value="426">English Premier League</option>
 				        <option value="430">Bundesliga</option>
 				        <option value="436">La Liga</option>
