@@ -98,10 +98,17 @@ navbar
 /*****
 Tables
 ******/
+
+table {
+	background-color: #000000;
+	color: #FFFFFF;
+}
+
 td,
 th {
-  border: 2px solid #000000;
+  border: 2px solid #FFFFFF;
   text-align: center;
+  padding: 1px;
 }
 
 th {
@@ -144,6 +151,9 @@ media queries
 	td,
 	th {
 	  padding: 5px;
+	  border: none;
+	  border-bottom: 1px #FFFFFF solid;
+	  font-weight:bold;
 	}
 
 }

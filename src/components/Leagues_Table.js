@@ -18,7 +18,7 @@ const Leagues_Table = (props) => (
 		         	<th>GD</th>
 		          	<th>PTS</th>
           		</tr>
-          		{props.data.standing.map((each) => (<tr>
+          		{props.data.standing.map((each,index) => (<tr key={index.toString()}>
           			<td>{each.position}</td>
           			<td>{each.teamName}</td>
           			<td>{each.playedGames}</td>
