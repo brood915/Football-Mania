@@ -32,9 +32,19 @@ body, html, #app, #main {
 	margin-top: 40px;
 }
 
+
+
+
 /*****
 form, btns
 ******/
+
+
+form {
+	@include center();
+	flex-direction: column;
+}
+
 
 .form-group {
 	margin-top: 15px;
@@ -50,6 +60,10 @@ form, btns
 	    border-color: #333333;
 	}
 }
+
+
+
+
 
 /*****
 navbar
@@ -106,13 +120,14 @@ table {
 
 td,
 th {
-  border: 2px solid #FFFFFF;
+  border: 1px solid #FFFFFF;
   text-align: center;
   padding: 1px;
 }
 
 th {
   font-size: 15px;
+  text-transform: uppercase;
 }
 
 
@@ -144,16 +159,16 @@ media queries
 
 @media screen and (min-width: 480px) {
 
-	.navbar-nav li:first-child {
-		margin-left: 30px;
-	}
-
 	td,
 	th {
 	  padding: 5px;
 	  border: none;
 	  border-bottom: 1px #FFFFFF solid;
 	  font-weight:bold;
+	}
+
+	th {
+		border-bottom: 2px #FFFFFF solid;
 	}
 
 }
