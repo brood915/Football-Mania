@@ -26,7 +26,8 @@ class Players extends React.Component {
 
 	handleSubmit (e) {
 		e.preventDefault();
-		console.log('works')
+		console.log('works');
+		this.props.getData('http://jokecamp.github.io/epl-fantasy-geek/js/static-data.json','');
 	}
 
 	render() { return (  
