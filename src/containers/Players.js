@@ -27,7 +27,7 @@ class Players extends React.Component {
 	handleSubmit (e) {
 		e.preventDefault();
 		console.log('works');
-		this.props.getData('http://jokecamp.github.io/epl-fantasy-geek/js/static-data.json','');
+		this.props.getData('https://fantasy.premierleague.com/drf/bootstrap-static','');
 	}
 
 	render() { return (  

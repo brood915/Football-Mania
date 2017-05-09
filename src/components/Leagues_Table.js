@@ -10,9 +10,9 @@ const Leagues_Table = (props) => (
       <table>
       		<tbody>
         		<tr>
-		          	<th>Pos</th>
-		          	<th>Team</th>
-		          	<th>P</th>
+		          <th>Pos</th>
+		          <th>Team</th>
+		          <th>P</th>
 		         	<th>W</th>
 		         	<th>D</th>
 		         	<th>L</th>
