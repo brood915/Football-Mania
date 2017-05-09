@@ -19,7 +19,7 @@ const Leagues = (props) => (
 					</FormControl>
 				</FormGroup>
       		</form>
-      		<Button onClick = {()=>props.getData('competitions/' + props.league + '/leagueTable')}>Get the table!</Button>
+      		<Button onClick = {()=>props.getData('https://api.football-data.org/v1/competitions/', props.league + '/leagueTable')}>Get the table!</Button>
       		<Leagues_Table data = {props.data} />
 		  </div>
 	  );

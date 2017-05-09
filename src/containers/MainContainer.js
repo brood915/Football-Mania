@@ -21,8 +21,8 @@ class MainContainer extends React.Component {
     this.getData = this.getData.bind(this);
 	}
 
-	getData (type) {
-		fetch('http://api.football-data.org/v1/' + type, {
+	getData (url, type) {
+		fetch(url + type, {
   		headers: {
     		'X-Auth-Token': '93ec85906d8a472894cad03fdadb19b9'
   			}
@@ -44,8 +44,8 @@ render() {
         <Header />
         <Route exact path="/" component={Home}/>
         <Route path="/leagues" render={()=><Leagues league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
-        <Route path="/tournaments" render={()=><Tournaments getData = {this.getData}/>}/>
-        <Route path="/players" render={()=><Players getData = {this.getData}/>}/>
+        <Route path="/tournaments" render={()=><Tournaments getData = {this.getData} />}/>
+        <Route path="/players" render={()=><Players getData = {this.getData} data = {this.state.data}/>}/>
         <Route path="/saved" component={Saved}/>
         <Footer />
     </div>);

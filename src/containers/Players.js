@@ -26,7 +26,8 @@ class Players extends React.Component {
 
 	handleSubmit (e) {
 		e.preventDefault();
-		console.log('works')
+		console.log('works');
+		this.props.getData('https://fantasy.premierleague.com/drf/bootstrap-static','');
 	}
 
 	render() { return (  

@@ -6,6 +6,7 @@ mixins and variables
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
 
 
@@ -25,13 +26,11 @@ body, html, #app, #main {
 	min-height: 100%;
 	@include center ();
 	justify-content: flex-start;
-	flex-direction: column;
 }
 
 .dataContainer {
 	margin-top: 40px;
 }
-
 
 
 
@@ -42,7 +41,6 @@ form, btns
 
 form {
 	@include center();
-	flex-direction: column;
 }
 
 
@@ -61,6 +59,11 @@ form {
 	}
 }
 
+.saveBtn {
+	padding: 10px;
+	margin-bottom: 10px;
+	
+}
 
 
 
@@ -113,6 +116,9 @@ navbar
 Tables
 ******/
 
+.table {
+	@include center();
+}
 
 td,
 th {
