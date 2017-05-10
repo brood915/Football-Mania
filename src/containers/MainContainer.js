@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Home from './Home';
 import Leagues from './Leagues'; 
-import Tournaments from './Tournaments';
+import Teams from './Teams';
 import Players from './Players';
 import Saved from './Saved';
 import { Route } from 'react-router-dom';
@@ -44,7 +44,7 @@ render() {
         <Header />
         <Route exact path="/" component={Home}/>
         <Route path="/leagues" render={()=><Leagues league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
-        <Route path="/tournaments" render={()=><Tournaments getData = {this.getData} />}/>
+        <Route path="/teams" render={()=><Teams league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData} />}/>
         <Route path="/players" render={()=><Players getData = {this.getData} data = {this.state.data}/>}/>
         <Route path="/saved" component={Saved}/>
         <Footer />
