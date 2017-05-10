@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 const Leagues_Table = (props) => (
 	<div className='dataContainer'>
 		{(props.data.standing) && 
-      <div className='table'>
+      <div className='data'>
       <Button className='saveBtn'>Save</Button>
       <table>
       		<tbody>
