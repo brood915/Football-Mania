@@ -65,6 +65,10 @@ form {
 	
 }
 
+.btnGroup {
+	@include center();
+}
+
 
 
 
@@ -116,7 +120,7 @@ navbar
 Tables
 ******/
 
-.table {
+.data {
 	@include center();
 }
 
@@ -138,6 +142,7 @@ td {
 	background-color: #FFFFFF;
 	color: #000000;
 }
+
 
 
 
@@ -182,6 +187,10 @@ media queries
 
 	td {
 		border-bottom: 1px #000000 solid;
+	}
+
+	.btnGroup {
+		flex-direction: row;
 	}
 
 
