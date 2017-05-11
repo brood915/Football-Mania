@@ -32,6 +32,9 @@ body, html, #app, #main {
 	margin-top: 40px;
 }
 
+.data {
+	@include center();
+}
 
 
 /*****
@@ -120,9 +123,6 @@ navbar
 Tables
 ******/
 
-.data {
-	@include center();
-}
 
 td,
 th {

@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import Teams_Info from '../components/Teams_Info';
 
-const Teams = (props,e) => 
-(<div className='mainContent'>
+const Teams = (props) => {
+
+function handleClick () {
+	props.getData(props.team, 'subData');
+	console.log(props.subData);
+}
+
+return (<div className='mainContent'>
 	<form onChange = {props.getLeague}>
 		<FormGroup controlId="formControlsSelect">
 		    <ControlLabel>Select a league</ControlLabel>
@@ -24,8 +31,9 @@ const Teams = (props,e) =>
 		  		</FormControl>
 		  </FormGroup>
 	</form>
-		        <Button data-type = 'tables' >Get the team!</Button>
+		        <Button onClick ={handleClick}>Get the team!</Button>
+		        <Teams_Info getData = {props.getData} data = {props.subData} />
 		  	</div>
-);
+);}
 
 export default Teams;
