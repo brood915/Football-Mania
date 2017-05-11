@@ -15,8 +15,9 @@ class MainContainer extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-    	data: [],
-      subData: [],
+    	data: {},
+      subData: {},
+      teamInfo: {},
     	league:0,
       team_url: ''
     	}
@@ -55,7 +56,7 @@ render() {
         <Header />
         <Route exact path="/" component={Home}/>
         <Route path="/leagues" render={()=><Leagues league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
-        <Route path="/teams" render={()=><Teams team = {this.state.team_url} league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} subData = {this.state.subData} getData = {this.getData} />}/>
+        <Route path="/teams" render={()=><Teams team = {this.state.team_url} league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} subData = {this.state.subData} teamInfo = {this.state.teamInfo} getData = {this.getData} />}/>
         <Route path="/players" render={()=><Players getData = {this.getData} data = {this.state.data}/>}/>
         <Route path="/saved" component={Saved}/>
         <Footer />
