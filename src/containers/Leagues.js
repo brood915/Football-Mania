@@ -15,10 +15,10 @@ class Leagues extends React.Component {
 	handleClick (e) {
 		const type = e.target.getAttribute('data-type');
 		if (type === 'tables') {
-			this.props.getData('https://api.football-data.org/v1/competitions/', this.props.league + '/leagueTable');
+			this.props.getData('https://api.football-data.org/v1/competitions/' + this.props.league + '/leagueTable', 'data');
 		}
 		else if (type === 'fixtures') {
-			this.props.getData('https://api.football-data.org/v1/competitions/', this.props.league + '/fixtures');
+			this.props.getData('https://api.football-data.org/v1/competitions/' + this.props.league + '/fixtures', 'data');
 		}
 		this.setState({type});
 	}

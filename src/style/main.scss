@@ -32,6 +32,9 @@ body, html, #app, #main {
 	margin-top: 40px;
 }
 
+.data {
+	@include center();
+}
 
 
 /*****
@@ -120,19 +123,15 @@ navbar
 Tables
 ******/
 
-.data {
-	@include center();
-}
 
 td,
 th {
   border: 1px solid #000000;
   text-align: center;
-  padding: 1px;
+  font-size: 12px;
 }
 
 th {
-	font-size: 15px;
 	text-transform: uppercase;
 	background-color: #000000;
 	color: #FFFFFF;
@@ -177,10 +176,10 @@ media queries
 	  padding: 5px;
 	  border: none;
 	  font-weight:bold;
+	  font-size: 15px;
 	}
 
 	th {
-	  font-size: 15px;
 	  text-transform: uppercase;
 
 	}
