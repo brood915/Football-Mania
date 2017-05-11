@@ -16,13 +16,14 @@ class MainContainer extends React.Component {
     super(props);
     this.state = {
     	data: [],
-    	league:0
+    	league:0,
+      team_url: ''
     	}
     this.getData = this.getData.bind(this);
 	}
 
-	getData (url, type) {
-		fetch(url + type, {
+	getData (url) {
+		fetch(url, {
   		headers: {
     		'X-Auth-Token': '93ec85906d8a472894cad03fdadb19b9'
   			}
@@ -35,7 +36,16 @@ class MainContainer extends React.Component {
 	}
 
 	getLeague (e) {
-		this.setState({league: Number(e.target.value)});
+    const type = e.target.getAttribute('data-type');
+    if ( type === 'leagues'){
+      this.setState({league: Number(e.target.value)},()=>this.getData('https://api.football-data.org/v1/competitions/' + this.state.league + '/teams'));
+    }
+    else if ( type === 'teams'){
+      this.setState({team_url: e.target.value});
+    }
+    else {
+		  this.setState({league: Number(e.target.value)});
+    }
 	}
 	
 
@@ -44,7 +54,7 @@ render() {
         <Header />
         <Route exact path="/" component={Home}/>
         <Route path="/leagues" render={()=><Leagues league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
-        <Route path="/teams" render={()=><Teams league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData} />}/>
+        <Route path="/teams" render={()=><Teams team = {this.state.team_url} league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData} />}/>
         <Route path="/players" render={()=><Players getData = {this.getData} data = {this.state.data}/>}/>
         <Route path="/saved" component={Saved}/>
         <Footer />
