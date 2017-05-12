@@ -13,6 +13,10 @@ const Teams_Fixtures = (props) => (
 			<span className = 'resultColor' style = {{'borderLeft': '10px solid red'}}> = L</span>
 			<span className = 'resultColor' style = {{'borderLeft': '10px solid gray'}}> = D</span>
 		</div>
+            <div className='btnGroup infoBtn'>
+                  <Button>Save</Button>
+                  <Button>Upcoming</Button>
+            </div>
 			<table>
       			<tbody>
 	        		<tr>

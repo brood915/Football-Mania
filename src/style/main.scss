@@ -36,6 +36,29 @@ body, html, #app, #main {
 	@include center();
 }
 
+.full {
+	height: 100vh;
+	width: 100%;
+	@include center();
+	text-align: center;
+}
+
+
+
+/*****
+imgs
+******/
+
+.backgroundImg {
+	background: url(http://blogfiles.naver.net/20150324_221/imun_14_1427206758687sH1ur_JPEG/%BC%D2%B3%F3%B9%CE.jpg) no-repeat center center fixed; 
+	background-size: cover;
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	@include center();
+}	
+
+
 
 /*****
 form, btns
@@ -72,6 +95,9 @@ form {
 	@include center();
 }
 
+.infoBtn {
+	margin: 10px 0 10px 0;
+}
 
 
 
@@ -83,6 +109,7 @@ navbar
 	background-color: #000000;
 	font-weight: bold;
 	border-radius: 0;
+	margin-bottom: 0;
 
 	.navbar-brand {
 		color: white;
@@ -163,7 +190,6 @@ footer {
     width: 100%;
     background: #000000;
     height: 50px;
-    margin-top: 30px;
 }
 
 
