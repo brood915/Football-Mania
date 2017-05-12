@@ -7,7 +7,7 @@ const Teams_Players = (props) => (
 	<div className='dataContainer'>
 	{props.data.players && 
 		<div className = 'data'>
-		<h2>{props.name} - Squad</h2>
+		<h2>Squad</h2>
 			<table>
       			<tbody>
 	        		<tr>
