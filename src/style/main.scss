@@ -36,12 +36,14 @@ body, html, #app, #main {
 	@include center();
 }
 
-.full {
+.home div {
 	height: 100vh;
 	width: 100%;
 	@include center();
 	text-align: center;
 }
+
+
 
 
 
@@ -97,6 +99,16 @@ form {
 
 .infoBtn {
 	margin: 10px 0 10px 0;
+}
+
+.email {
+	align-items: initial;
+
+	input, textarea {
+		background-color: #000000;
+		color: #FFFFFF;
+
+	}
 }
 
 
