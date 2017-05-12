@@ -7,6 +7,7 @@ const Teams_Fixtures = (props) => (
 	<div className='dataContainer'>
 	{props.data.fixtures && 
 		<div className = 'data'>
+		<h2>{props.name} - Fixtures</h2>
 			<table>
       			<tbody>
 	        		<tr>
@@ -20,7 +21,7 @@ const Teams_Fixtures = (props) => (
       		<td>{each.date}</td>
       		<td>{each.homeTeamName}</td>
       		<td>{each.awayTeamName}</td>
-      		<td>haha</td>
+      		<td>{each.status === 'FINISHED' ? each.result.goalsHomeTeam + ':' + each.result.goalsAwayTeam : 'NA'}</td>
       	</tr>
 	      		)
 	     	 )

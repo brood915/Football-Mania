@@ -6,13 +6,13 @@ import Teams_Players from './Teams_Players';
 
 
 const Teams_Info = (props) => {
-	
+
 	function returnData () {
 		if (props.type === 'fixtures'){
-			return <Teams_Fixtures data = {props.teamData} />
+			return <Teams_Fixtures name = {props.data.name} data = {props.teamData} />
 		}
 		else if (props.type === 'players'){
-			return <Teams_Players data = {props.teamData}/>
+			return <Teams_Players name = {props.data.name} data = {props.teamData}/>
 		}
 	}
 
