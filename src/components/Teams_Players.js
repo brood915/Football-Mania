@@ -8,9 +8,6 @@ const Teams_Players = (props) => (
 	{props.data.players && 
 		<div className = 'data'>
 		<h2>Squad</h2>
-            <div className='btnGroup infoBtn'>
-                  <Button>Save</Button>
-            </div>
 			<table>
       			<tbody>
 	        		<tr>

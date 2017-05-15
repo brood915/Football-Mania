@@ -29,12 +29,9 @@ render() {
                   <span className = 'resultColor' style = {{'borderLeft': '10px solid red'}}> = L</span>
                   <span className = 'resultColor' style = {{'borderLeft': '10px solid gray'}}> = D</span>
             </div>
-            <div className='btnGroup infoBtn'>
-                  <Button>Save</Button>
-                  <Button onClick={this.filterFixtures.bind(this)}>
+                  <Button className='btnGroup' onClick={this.filterFixtures.bind(this)}>
                   {this.state.upcoming === false ? 'Upcoming' : 'Full'}
                   </Button>
-            </div>
                   <table>
                         <tbody>
                           <tr>

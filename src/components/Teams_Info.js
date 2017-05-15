@@ -25,6 +25,7 @@ const Teams_Info = (props) => {
 					<div className='btnGroup'>
 						<Button data-type='fixtures' onClick = {props.handleDataType} >Fixtures</Button>
 						<Button data-type='players' onClick = {props.handleDataType} >Players</Button>
+						<Button>Save</Button>
 					</div>
 				</div>}
 				{returnData()}

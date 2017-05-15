@@ -28,9 +28,6 @@ body, html, #app, #main {
 	justify-content: flex-start;
 }
 
-.dataContainer {
-	margin-top: 40px;
-}
 
 .data {
 	@include center();
@@ -122,12 +119,8 @@ form {
 
 .btnGroup {
 	@include center();
+	margin: 10px 0 20px 0;
 }
-
-.infoBtn {
-	margin: 10px 0 10px 0;
-}
-
 
 
 .email {
