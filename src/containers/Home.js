@@ -12,7 +12,7 @@ const Home = () => (
 				className = 'times'
 				name='times' size='2x'/>
 			</h2>
-			<h2><span className='crossline'>Tired of switching between multiple pages for what you want?</span>
+			<h2><span className='crossline'>Tired of switching between multiple pages?</span>
 				<FontAwesome
 				className = 'times'
 				name='times' size ='2x'/>

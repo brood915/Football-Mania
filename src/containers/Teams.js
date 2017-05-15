@@ -56,7 +56,7 @@ return (<div className='mainContent'>
 		  		</FormControl>
 		  </FormGroup>
 	</form>
-		        <Button onClick ={this.handleClick}>Get the team!</Button>
+		        <Button className='btnGroup' onClick ={this.handleClick}>Get the team!</Button>
 		        <Teams_Info type = {this.state.type} handleDataType = {this.handleDataType} getData = {this.props.getData} data = {this.props.subData} teamData = {this.props.teamInfo} />
 		  	</div>
 		);
