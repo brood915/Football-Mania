@@ -47,53 +47,6 @@ body, html, #app, #main {
 
 
 /*****
-Animations
-******/
-
-
-span.crossline {
-  position: relative;
-  cursor: pointer;
-}
-
-span.crossline:before, span.crossline:after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  top: 50%;
-  margin-top: -0.5px;
-  background: #000000;
-}
-
-span.crossline:before {
-  left: -2.5px;
-}
-
-span.crossline:after {
-  right: 2.5px;
-  background: #000000;
-  transition: width 2s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-span.crossline:hover:before {
-  background: #000000;
-  width: 100%;
-  transition: width 2s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-span.crossline:hover:after {
-  background: transparent;
-  width: 100%;
-  transition: 0s;
-}
-
-
-
-
-
-
-/*****
 imgs, icons
 ******/
 
@@ -342,6 +295,48 @@ media queries
 
 	.email {
 		width: 500px;
+	}
+
+	/*****
+	Animations
+	******/
+
+
+	span.crossline {
+	  position: relative;
+	  cursor: pointer;
+	}
+
+	span.crossline:before, span.crossline:after {
+	  content: '';
+	  position: absolute;
+	  width: 0%;
+	  height: 2px;
+	  top: 50%;
+	  margin-top: -0.5px;
+	  background: #000000;
+	}
+
+	span.crossline:before {
+	  left: -2.5px;
+	}
+
+	span.crossline:after {
+	  right: 2.5px;
+	  background: #000000;
+	  transition: width 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+	}
+
+	span.crossline:hover:before {
+	  background: #000000;
+	  width: 100%;
+	  transition: width 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+	}
+
+	span.crossline:hover:after {
+	  background: transparent;
+	  width: 100%;
+	  transition: 0s;
 	}
    
 }
