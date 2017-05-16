@@ -12,7 +12,7 @@ mixins and variables
 
 
 /*****
-General
+General, containers
 ******/
 
 body, html, #app, #main {
@@ -29,8 +29,21 @@ body, html, #app, #main {
 }
 
 
-.data {
+.data, .saved, .center {
 	@include center();
+}
+
+
+.saved h1 {
+	width: 100%;
+	text-align: center;
+}
+
+
+.divider {
+	border-top: 2px solid #000000;
+	width: 100%;
+	margin: 20px 0 20px 0;
 }
 
 .home div {
@@ -41,6 +54,9 @@ body, html, #app, #main {
 }
 
 
+.hide {
+	display:none;
+}
 
 
 /*****
@@ -57,7 +73,7 @@ imgs, icons
 }	
 
 .football {
-	color: white;
+	color: #FFFFFF;
 }
 
 .times, .football {
@@ -111,11 +127,6 @@ form {
 	}
 }
 
-.saveBtn {
-	padding: 10px;
-	margin-bottom: 10px;
-	
-}
 
 .btnGroup {
 	@include center();
@@ -192,7 +203,7 @@ Tables
 ******/
 
 table {
-	margin-bottom: 30px;
+	margin: 10px 0 30px 0;
 }
 
 td,
@@ -291,6 +302,18 @@ media queries
 
 	.email {
 		width: 500px;
+	}
+
+
+
+	.saved {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+
+		.dataContainer {
+			margin: 10px;
+		}
 	}
 
 	/*****
