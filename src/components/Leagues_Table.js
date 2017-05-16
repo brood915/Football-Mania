@@ -6,7 +6,15 @@ const Leagues_Table = (props) => (
 	<div className='dataContainer'>
 		{(props.data.standing) && 
       <div className='data'>
-      <Button className='saveBtn'>Save</Button>
+	  	<h3>{props.data.leagueCaption}</h3>
+      	{props.saved ? 
+		<Button onClick = {()=>props.removeLeague(props.index)}>
+		Delete
+		</Button>
+		:
+		<Button onClick = {()=>props.addLeague(props.data, 'tables')}>
+		Save
+		</Button>}
       <table>
       		<tbody>
         		<tr>

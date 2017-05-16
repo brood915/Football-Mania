@@ -29,11 +29,22 @@ body, html, #app, #main {
 }
 
 
-.data, .savedLeagues {
+.data, .saved {
 	@include center();
 }
 
 
+.saved h2 {
+	width: 100%;
+	text-align: center;
+}
+
+
+.divider {
+	border-top: 2px solid #000000;
+	width: 100%;
+	margin: 20px 0 20px 0;
+}
 
 .home div {
 	height: 100vh;
@@ -62,7 +73,7 @@ imgs, icons
 }	
 
 .football {
-	color: white;
+	color: #FFFFFF;
 }
 
 .times, .football {
@@ -295,7 +306,7 @@ media queries
 
 
 
-	.savedLeagues{
+	.saved {
 		flex-direction: row;
 		flex-wrap: wrap;
 		align-items: flex-start;
