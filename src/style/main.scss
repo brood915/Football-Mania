@@ -29,12 +29,12 @@ body, html, #app, #main {
 }
 
 
-.data, .saved {
+.data, .saved, .center {
 	@include center();
 }
 
 
-.saved h2 {
+.saved h1 {
 	width: 100%;
 	text-align: center;
 }

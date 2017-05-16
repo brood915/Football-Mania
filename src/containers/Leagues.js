@@ -46,7 +46,7 @@ class Leagues extends React.Component {
 		        		<Button data-type = 'tables' onClick = {this.handleClick.bind(this)}>Get the table!</Button>
 		        		<Button data-type = 'fixtures' onClick = {this.handleClick.bind(this)}>Upcoming Matches!</Button>
 		        		</div>
-		        		{this.state.type === 'tables' ? <Leagues_Table addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} /> : <Leagues_Fixtures addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} />}
+		        		{this.state.type === 'tables' ? <Leagues_Table addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} /> : <Leagues_Fixtures addLeague = {this.props.addLeague} league = {this.props.league} leagueName = {this.props.leagueName} data = {this.props.data} />}
 		        		
 		  		  </div>);
 }

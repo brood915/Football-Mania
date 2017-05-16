@@ -19,6 +19,7 @@ class MainContainer extends React.Component {
       subData: {},
       teamInfo: {},
     	league:0,
+      leagueName: '',
       team_url: ''
     	}
     this.getData = this.getData.bind(this);
@@ -39,14 +40,18 @@ class MainContainer extends React.Component {
 
 	getLeague (e) {
     const type = e.target.getAttribute('data-type');
+    //for Teams container
     if ( type === 'leagues'){
-      this.setState({league: Number(e.target.value)},()=>this.getData('https://api.football-data.org/v1/competitions/' + this.state.league + '/teams', 'data'));
+      this.setState({league: e.target.value},()=>this.getData('https://api.football-data.org/v1/competitions/' + this.state.league + '/teams', 'data'));
     }
     else if ( type === 'teams'){
       this.setState({team_url: e.target.value});
     }
+    //for Leagues container
     else {
-		  this.setState({league: Number(e.target.value)});
+      const index = e.nativeEvent.target.selectedIndex; //to extract league name
+		  this.setState({league: e.target.value, leagueName: e.nativeEvent.target[index].text, data: {}});
+      
     }
 	}
 	
@@ -55,7 +60,7 @@ render() {
   return(<div id="main">
         <Header />
         <Route exact path="/" component={Home}/>
-        <Route path="/leagues" render={()=><Leagues league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
+        <Route path="/leagues" render={()=><Leagues league = {this.state.league} leagueName = {this.state.leagueName} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
         <Route path="/teams" render={()=><Teams team = {this.state.team_url} league = {this.state.league} getLeague = {this.getLeague.bind(this)} data = {this.state.data} subData = {this.state.subData} teamInfo = {this.state.teamInfo} getData = {this.getData} />}/>
         <Route path="/players" render={()=><Players getData = {this.getData} data = {this.state.data}/>}/>
         <Route path="/saved" component={Saved}/>

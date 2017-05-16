@@ -7,6 +7,7 @@ const Leagues_Fixtures = (props) => (
 	<div className='dataContainer'>
 		{(props.data.fixtures) && 
 		<div className='data'>
+		<h3>{props.leagueName}</h3>
 		{props.saved ? 
 		<Button onClick = {()=>props.removeLeague(props.index)}>
 		Delete
