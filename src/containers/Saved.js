@@ -10,8 +10,11 @@ import Leagues_Fixtures from '../components/Leagues_Fixtures';
 
 const Saved = (props) => (
   <div className='mainContent'>
+  <h2>League Fixtures</h2>
     <div className='savedLeagues'>
-      {props.leagues.map((each,index) => (<Leagues_Fixtures removeLeague = {props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}
+      {props.leagues
+        .filter((each,index) => (each.type === 'fixtures'))
+        .map((each,index) => (<Leagues_Fixtures removeLeague = {props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}
     </div>
   </div>
 )

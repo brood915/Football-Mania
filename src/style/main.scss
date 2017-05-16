@@ -12,7 +12,7 @@ mixins and variables
 
 
 /*****
-General
+General, containers
 ******/
 
 body, html, #app, #main {
@@ -29,9 +29,11 @@ body, html, #app, #main {
 }
 
 
-.data {
+.data, .savedLeagues {
 	@include center();
 }
+
+
 
 .home div {
 	height: 100vh;
@@ -289,6 +291,18 @@ media queries
 
 	.email {
 		width: 500px;
+	}
+
+
+
+	.savedLeagues{
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+
+		.dataContainer {
+			margin: 10px;
+		}
 	}
 
 	/*****
