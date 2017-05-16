@@ -7,7 +7,7 @@ const Leagues_Fixtures = (props) => (
 	<div className='dataContainer'>
 		{(props.data.fixtures) && 
 		<div className='data'>
-		<h3>{props.leagueName}</h3>
+		<h3>{props.leagueName} Upcoming Fixtures</h3>
 		{props.saved ? 
 		<Button onClick = {()=>props.removeLeague(props.index)}>
 		Delete
