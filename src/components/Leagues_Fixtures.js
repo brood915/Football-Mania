@@ -7,7 +7,14 @@ const Leagues_Fixtures = (props) => (
 	<div className='dataContainer'>
 		{(props.data.fixtures) && 
 		<div className='data'>
-		<Button className='saveBtn'>Save</Button>
+		{props.saved ? 
+		<Button onClick = {()=>props.removeLeague(props.index)}>
+		Delete
+		</Button>
+		:
+		<Button onClick = {()=>props.addLeague(props.data, 'fixtures')}>
+		Save
+		</Button>}
 		    <table>
       			<tbody>
 	        		<tr>

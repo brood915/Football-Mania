@@ -1,32 +1,61 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-	tasks:[]
+	leagues:[],
+  teams: []
 }
 
+let index = 0;
 
-//managing tasks. adding,removing, and moving
-function tasks (state = initialState, action) {
+//managing leagues
+function leagues (state = initialState, action) {
   switch (action.type) {
-    case 'ADD_TASK':
+    case 'ADD_LEAGUE':
       return Object.assign({}, state, {
-        tasks: [
-          ...state.tasks,
+        leagues: [
+          ...state.leagues,
           {
-            task: action.task,
-            stage: 'ready'
+            league: action.league,
+            type: action.types,
+            index: index++
           }
         ]
       })
+    case 'REMOVE_LEAGUE':
+      return Object.assign({}, state, {
+        leagues: state.leagues.filter((each)=>{return each.index !== action.index})
+      })      
+    default:
+      return state      
+  }
+}
+
+//managing teams
+function teams (state = initialState, action) {
+  let index = 0;
+  switch (action.type) {
+    case 'ADD_TEAM':
+      return Object.assign({}, state, {
+        leagues: [
+          ...state.teams,
+          {
+            league: action.team,
+            index: index++
+          }
+        ]
+      })
+    case 'REMOVE_TEAM':
+      return Object.assign({}, state, {
+        teams: state.teams.filter((each)=>{return each.index !== action.index})
+      })      
     default:
       return state      
   }
 }
 
 
-
 const app = combineReducers({
-  tasks
+  leagues, teams
 })
 
 export default app;

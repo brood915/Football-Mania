@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import Leagues_Table from '../components/Leagues_Table';
 import Leagues_Fixtures from '../components/Leagues_Fixtures';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addLeague } from '../actions/actions';
 
 class Leagues extends React.Component { 
 	constructor(props) {
@@ -43,12 +46,15 @@ class Leagues extends React.Component {
 		        		<Button data-type = 'tables' onClick = {this.handleClick.bind(this)}>Get the table!</Button>
 		        		<Button data-type = 'fixtures' onClick = {this.handleClick.bind(this)}>Upcoming Matches!</Button>
 		        		</div>
-		        		{this.state.type === 'tables' ? <Leagues_Table data = {this.props.data} /> : <Leagues_Fixtures data = {this.props.data} />}
+		        		{this.state.type === 'tables' ? <Leagues_Table addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} /> : <Leagues_Fixtures addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} />}
 		        		
 		  		  </div>);
 }
 }
 
+const mapDispatchToProps = (dispatch) => {
+   return bindActionCreators({ addLeague }, dispatch); 
+};
 
 
-export default Leagues;
+export default connect(null, mapDispatchToProps)(Leagues);

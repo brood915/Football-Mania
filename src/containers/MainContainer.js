@@ -64,4 +64,4 @@ render() {
 }
 }
         
-export default connect()(MainContainer);
+export default MainContainer;
