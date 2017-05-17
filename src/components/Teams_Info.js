@@ -39,10 +39,10 @@ class Teams_Info extends React.Component {
 
 	returnData () {
 		if (this.state.type === 'fixtures'){
-			return <Teams_Fixtures data = {this.props.teamFixtures} />
+			return <Teams_Fixtures name = {this.props.data.name} data = {this.props.teamFixtures} />
 		}
 		else if (this.state.type === 'players'){
-			return <Teams_Players data = {this.props.teamPlayers}/>
+			return <Teams_Players name = {this.props.data.name} data = {this.props.teamPlayers}/>
 		}
 	}
 
