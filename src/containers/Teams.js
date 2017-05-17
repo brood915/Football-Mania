@@ -7,19 +7,12 @@ import Teams_Info from '../components/Teams_Info';
 const Teams = (props) => {
 	function handleData (data) {
 		props.getData(data, 'teamInfo');
-		console.log(props.teamInfo);
 }
 
 
 	function handleClick () {
-		const promise = new Promise ((resolve, reject) => {
-			resolve(props.getData(props.team, 'subData'));
-		});
-		
-		promise
-		.then(()=>props.getData(props.subData['_links'].fixtures.href, 'teamFixtures'))
-		.then(()=>props.getData(props.subData['_links'].players.href, 'teamPlayers'))
-		.then(()=>console.log(props.teamPlayers, props.teamFixtures));
+		props.getData(props.team, 'subData');
+		props.resetTeamData();
 	}
 
 	return (<div className='mainContent'>
@@ -44,7 +37,7 @@ const Teams = (props) => {
 		  </FormGroup>
 	</form>
 		        <Button className='btnGroup' onClick ={handleClick}>Get the team!</Button>
-		        <Teams_Info handleData = {handleData} data = {props.subData} teamFixtures = {props.teamFixtures} teamPlayers = {props.teamPlayers} />
+		        <Teams_Info getData={props.getData} handleData = {handleData} data = {props.subData} teamFixtures = {props.teamFixtures} teamPlayers = {props.teamPlayers} />
 		  	</div>)}
 
 

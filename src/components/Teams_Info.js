@@ -15,11 +15,25 @@ class Teams_Info extends React.Component {
 		}
 
 		this.handleType = this.handleType.bind(this);
+		this.handleSave = this.handleSave.bind(this);		
 	}
 	
+	handleSave () {
+		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
+		this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
+		console.log(this.props.teamFixtures, this.props.teamPlayers);
+		// this.props.addTeam(this.props.data, this.props.teamData)
+	}
+
 	
 	handleType(e) {
 		const type = e.target.getAttribute('data-type');
+		if (type === 'fixtures') {
+ 			this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
+ 		}
+ 		else if (type === 'players') {
+ 			this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
+ 		}
 		this.setState({type});
 	}
 
@@ -47,9 +61,9 @@ class Teams_Info extends React.Component {
 						<div className='btnGroup'>
 						<Button data-type='fixtures' onClick = {this.handleType} >Fixtures</Button>
 						<Button data-type='players' onClick = {this.handleType} >Players</Button>	
-						{this.state.type && <Button onClick={()=>this.props.addTeam(this.props.data, this.props.teamData)}>
+						<Button onClick={this.handleSave}>
 						Save
-						</Button>}					
+						</Button>				
 					</div>}	
 				</div>}
 				{this.returnData()}
