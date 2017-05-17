@@ -1,3 +1,11 @@
+/*****
+imports
+******/
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+
+
 /*******************
 mixins and variables
 ********************/
@@ -20,6 +28,7 @@ body, html, #app, #main {
 	padding: 0;
 	height: 100%;
 	color: #000000;
+	font-family: 'Lato', sans-serif;
 }
 
 .mainContent {
