@@ -21,7 +21,6 @@ const Saved = (props) => {
           <h1 className={fixtures.length > 0 ? '' : 'hide'}>League Fixtures</h1>
           {fixtures.map((each,index) => (<Leagues_Fixtures removeLeague = {props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}
         </div>
-        <div className={fixtures.length > 0 && tables.length > 0 ? 'divider' : 'hide'}></div>
         <div className='saved'>
           <h1 className={tables.length > 0 ? '' : 'hide'}>League Tables</h1>
           {tables.map((each,index) => (<Leagues_Table removeLeague = {props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}
