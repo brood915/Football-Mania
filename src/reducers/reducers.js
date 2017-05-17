@@ -32,14 +32,15 @@ function leagues (state = initialState, action) {
 
 //managing teams
 function teams (state = initialState, action) {
-  let index = 0;
   switch (action.type) {
     case 'ADD_TEAM':
       return Object.assign({}, state, {
-        leagues: [
+        teams: [
           ...state.teams,
           {
-            league: action.team,
+            team: action.team,
+            teamInfo: action.teamInfo,
+            teamData: action.teamData,
             index: index++
           }
         ]

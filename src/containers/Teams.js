@@ -3,40 +3,27 @@ import PropTypes from 'prop-types';
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import Teams_Info from '../components/Teams_Info';
 
-class Teams extends React.Component {
-	constructor(props) {
-    super(props);
-    this.state = {
- 		type: ''
-    	}
-    this.handleClick = this.handleClick.bind(this);
-    this.handleDataType = this.handleDataType.bind(this);
-	}
 
-handleDataType (e) {
-	const type = e.target.getAttribute('data-type');
-	if (type === 'fixtures') {
-		this.props.getData(this.props.subData['_links'].fixtures.href, 'teamInfo');
-	}
-
-	else if (type === 'players') {
-		this.props.getData(this.props.subData['_links'].players.href, 'teamInfo');
-	}
-
-	console.log(this.props.teamInfo);
-	this.setState({type});
+const Teams = (props) => {
+	function handleData (data) {
+		props.getData(data, 'teamInfo');
+		console.log(props.teamInfo);
 }
 
 
-handleClick () {
-	this.props.getData(this.props.team, 'subData');
-	console.log(this.props.subData);
-	this.setState({type:''});
-}
+	function handleClick () {
+		const promise = new Promise ((resolve, reject) => {
+			resolve(props.getData(props.team, 'subData'));
+		});
+		
+		promise
+		.then(()=>props.getData(props.subData['_links'].fixtures.href, 'teamFixtures'))
+		.then(()=>props.getData(props.subData['_links'].players.href, 'teamPlayers'))
+		.then(()=>console.log(props.teamPlayers, props.teamFixtures));
+	}
 
-render(){
-return (<div className='mainContent'>
-	<form onChange = {this.props.getLeague}>
+	return (<div className='mainContent'>
+	<form onChange = {props.getLeague}>
 		<FormGroup controlId="formControlsSelect">
 		    <ControlLabel>Select a league</ControlLabel>
 		        <FormControl componentClass="select" placeholder="select" data-type ='leagues'>
@@ -51,16 +38,16 @@ return (<div className='mainContent'>
 		  		<ControlLabel>Select a team</ControlLabel>
 		        <FormControl componentClass="select" placeholder="select" data-type='teams'>
 		        	<option defaultValue>Find your team!</option>
-		        	{this.props.data.teams && this.props.data.teams.map((each,index)=>(
+		        	{props.data.teams && props.data.teams.map((each,index)=>(
 		        	<option key = {index.toString()} value = {each['_links'].self.href}>{each.name}</option>))}
 		  		</FormControl>
 		  </FormGroup>
 	</form>
-		        <Button className='btnGroup' onClick ={this.handleClick}>Get the team!</Button>
-		        <Teams_Info type = {this.state.type} handleDataType = {this.handleDataType} getData = {this.props.getData} data = {this.props.subData} teamData = {this.props.teamInfo} />
-		  	</div>
-		);
-	}
-}
+		        <Button className='btnGroup' onClick ={handleClick}>Get the team!</Button>
+		        <Teams_Info handleData = {handleData} data = {props.subData} teamFixtures = {props.teamFixtures} teamPlayers = {props.teamPlayers} />
+		  	</div>)}
+
+
+
 
 export default Teams;

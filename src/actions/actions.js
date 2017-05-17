@@ -1,4 +1,4 @@
-import { ADD_LEAGUE, REMOVE_LEAGUE } from './actionTypes';
+import { ADD_LEAGUE, REMOVE_LEAGUE, ADD_TEAM, REMOVE_TEAM } from './actionTypes';
 
 
 //action creators for leagues
@@ -13,8 +13,8 @@ export function removeLeague(index) {
 
 
 //action creators for teams
-export function addTeam(team) {
-  return { type: ADD_TEAM, team }
+export function addTeam(teamInfo, teamData) {
+  return { type: ADD_TEAM, teamInfo, teamData }
 }
 
 export function removeTeam(index) {
