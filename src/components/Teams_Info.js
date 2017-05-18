@@ -25,7 +25,6 @@ class Teams_Info extends React.Component {
 		setTimeout(() => { // wait for updated props bf adding to redux state
 			this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures);
 			console.log(this.props.teams);
-			console.log(this.props.teamPlayers, this.props.teamFixtures);
 		}, 1000);   		
 	}
 
