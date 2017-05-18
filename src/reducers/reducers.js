@@ -17,6 +17,7 @@ function leagues (state = initialState, action) {
           {
             league: action.league,
             type: action.types,
+            leagueName: action.leagueName,
             index: index++
           }
         ]
