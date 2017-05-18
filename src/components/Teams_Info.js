@@ -17,7 +17,7 @@ class Teams_Info extends React.Component {
 		this.handleType = this.handleType.bind(this);
 		this.handleSave = this.handleSave.bind(this);		
 	}
-	
+
 	handleSave () {
 		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
 		this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
@@ -25,10 +25,25 @@ class Teams_Info extends React.Component {
 		setTimeout(() => { // wait for updated props bf adding to redux state
 			this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures);
 			console.log(this.props.teams);
-		}, 1000);   		
+		}, 1000);  
 	}
 
-	
+	changeBtns () {
+		if (!this.props.saved) { //to render diff btns
+		// only if this component is rendered thru Teams container
+			let found;
+			found = this.props.teams.some((each)=>
+			each.teamInfo.name === this.props.data.name);
+			if (found) {
+				return <Button>Already Saved</Button>				
+			}
+			else {
+				return <Button onClick ={this.handleSave}>Save</Button>;	
+			}
+		} 
+	}
+
+
 	handleType(e) {
 		const type = e.target.getAttribute('data-type');
 		if (!this.props.saved) {	
@@ -65,9 +80,7 @@ class Teams_Info extends React.Component {
 							Delete
 							</Button>
 							:
-							<Button onClick={this.handleSave}>
-							Save
-							</Button>				
+							this.changeBtns()
 							}	
 						</div>
 				</div>}
