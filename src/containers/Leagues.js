@@ -46,15 +46,22 @@ class Leagues extends React.Component {
 		        		<Button data-type = 'tables' onClick = {this.handleClick.bind(this)}>Get the table!</Button>
 		        		<Button data-type = 'fixtures' onClick = {this.handleClick.bind(this)}>Upcoming Matches!</Button>
 		        		</div>
-		        		{this.state.type === 'tables' ? <Leagues_Table addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} /> : <Leagues_Fixtures addLeague = {this.props.addLeague} league = {this.props.league} leagueName = {this.props.leagueName} data = {this.props.data} />}
+		        		{this.state.type === 'tables' ? <Leagues_Table savedLeagues = {this.props.leagues} addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} /> : <Leagues_Fixtures savedLeagues = {this.props.leagues} addLeague = {this.props.addLeague} league = {this.props.league} leagueName = {this.props.leagueName} data = {this.props.data} />}
 		        		
 		  		  </div>);
 }
 }
+
+const mapStateToProps = (state) => {
+   return {
+    leagues: state.leagues.leagues,
+    teams: state.teams.teams
+   };
+};
 
 const mapDispatchToProps = (dispatch) => {
    return bindActionCreators({ addLeague }, dispatch); 
 };
 
 
-export default connect(null, mapDispatchToProps)(Leagues);
+export default connect(mapStateToProps, mapDispatchToProps)(Leagues);

@@ -21,8 +21,8 @@ const Saved = (props) => {
     {props.leagues.length > 0 && 
     <div>
         <div className='saved'>
-          <h1 className={fixtures.length > 0 ? '' : 'hide'}>League Fixtures</h1>
-          {fixtures.map((each,index) => (<Leagues_Fixtures removeLeague = {props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}
+          <h1 className={fixtures.length > 0 ? '' : 'hide'}>League Upcoming Fixtures</h1>
+          {fixtures.map((each,index) => (<Leagues_Fixtures leagueName = {each.leagueName} removeLeague = {props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}
         </div>
         <div className='saved'>
           <h1 className={tables.length > 0 ? '' : 'hide'}>League Tables</h1>
@@ -33,11 +33,8 @@ const Saved = (props) => {
     <div className='saved'>
         <h1 className={teams.length > 0 ? '' : 'hide'}>Teams</h1>
           {teams.map((each,index) => 
-            (<div>
-            <Teams_Info removeTeam = {props.removeTeam} index = {each.index} saved = 'true' key = {index.toString()} data = {each.teamInfo}/>
-            {each.teamData && <div><Teams_Fixtures data = {each.teamData} />
-            <Teams_Players data = {each.teamData} /></div>}
-          </div>))}
+            (
+            <Teams_Info removeTeam = {props.removeTeam} teamPlayers = {each.teamPlayers} teamFixtures = {each.teamFixtures} index = {each.index} saved = 'true' key = {index.toString()} data = {each.teamInfo}/>))}
     </div>}
     {props.leagues.length === 0 && props.teams.length === 0 &&
       <h1>Add your favorite information here!</h1>

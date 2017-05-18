@@ -34,10 +34,14 @@ class MainContainer extends React.Component {
 		})
 		.then((response) => response.json())
 		.then((json) => this.setState({[state]: json}))
-		.then(()=>console.log(this.state.data))
-		.catch((err) => console.log('Could not fetch the data!', err)
-  		)
+		.then(()=>console.log(this.state[state]))
+		.catch((err) => console.log('Could not fetch the data!', err))
 	}
+
+
+resetTeamData () {
+  this.setState({teamFixtures: {}, teamPlayers: {}});
+}
 
 	getLeague (e) {
     const type = e.target.getAttribute('data-type');
@@ -62,9 +66,9 @@ render() {
         <Header />
         <Route exact path="/" component={Home}/>
         <Route path="/leagues" render={()=><Leagues league = {this.state.league} leagueName = {this.state.leagueName} getLeague = {this.getLeague.bind(this)} data = {this.state.data} getData = {this.getData}/>}/>
-        <Route path="/teams" render={()=><Teams teamPlayers = {this.state.teamPlayers} teamFixtures = {this.state.teamFixtures} team = {this.state.team_url} getLeague = {this.getLeague.bind(this)} data = {this.state.data} subData = {this.state.subData} teamInfo = {this.state.teamInfo} getData = {this.getData} />}/>
+        <Route path="/teams" render={()=><Teams resetTeamData = {this.resetTeamData.bind(this)} teamPlayers = {this.state.teamPlayers} teamFixtures = {this.state.teamFixtures} team = {this.state.team_url} getLeague = {this.getLeague.bind(this)} data = {this.state.data} subData = {this.state.subData} teamInfo = {this.state.teamInfo} getData = {this.getData} />}/>
         <Route path="/players" render={()=><Players getData = {this.getData} data = {this.state.data}/>}/>
-        <Route path="/saved" render={()=><Saved getData = {this.getData} />}/>
+        <Route path="/saved" component={Saved}/>
         <Footer />
     </div>);
 }

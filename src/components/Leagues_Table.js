@@ -2,7 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
-const Leagues_Table = (props) => (
+const Leagues_Table = (props) => {
+	let btn; //to render different btns based on whether it is already saved or not
+	if (!props.saved){ // only if this component is rendered thru Leagues container
+		let found;
+		found = props.savedLeagues.some((each)=>
+		each.league.leagueCaption === props.data.leagueCaption);
+
+		if (found) {
+			btn = <Button>Already Saved</Button>
+		}
+		else {
+			btn = <Button onClick = {()=>props.addLeague(props.data, 'tables')}>
+		Save
+		</Button>
+		}
+	}
+
+	return (
 	<div className='dataContainer'>
 		{(props.data.standing) && 
       <div className='data'>
@@ -12,9 +29,7 @@ const Leagues_Table = (props) => (
 		Delete
 		</Button>
 		:
-		<Button onClick = {()=>props.addLeague(props.data, 'tables')}>
-		Save
-		</Button>}
+		btn}
       <table>
       		<tbody>
         		<tr>
@@ -48,6 +63,7 @@ const Leagues_Table = (props) => (
         </div>
       }
 	</div>
-)
+	)
+}
 
 export default Leagues_Table;

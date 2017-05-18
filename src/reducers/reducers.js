@@ -2,10 +2,9 @@ import { combineReducers } from 'redux';
 
 const initialState = {
 	leagues:[],
-  teams: []
+  teams: [],
+  index: 0
 }
-
-let index = 0;
 
 //managing leagues
 function leagues (state = initialState, action) {
@@ -17,7 +16,8 @@ function leagues (state = initialState, action) {
           {
             league: action.league,
             type: action.types,
-            index: index++
+            leagueName: action.leagueName,
+            index: state.index++
           }
         ]
       })
@@ -38,10 +38,10 @@ function teams (state = initialState, action) {
         teams: [
           ...state.teams,
           {
-            team: action.team,
             teamInfo: action.teamInfo,
-            teamData: action.teamData,
-            index: index++
+            teamPlayers: action.teamPlayers,
+            teamFixtures: action.teamFixtures,
+            index: state.index++
           }
         ]
       })

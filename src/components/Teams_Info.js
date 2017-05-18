@@ -15,20 +15,53 @@ class Teams_Info extends React.Component {
 		}
 
 		this.handleType = this.handleType.bind(this);
+		this.handleSave = this.handleSave.bind(this);		
 	}
-	
-	
+
+	handleSave () {
+		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
+		this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
+
+		setTimeout(() => { // wait for updated props bf adding to redux state
+			this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures);
+			console.log(this.props.teams);
+		}, 1000);  
+	}
+
+	changeBtns () {
+		if (!this.props.saved) { //to render diff btns
+		// only if this component is rendered thru Teams container
+			let found;
+			found = this.props.teams.some((each)=>
+			each.teamInfo.name === this.props.data.name);
+			if (found) {
+				return <Button>Already Saved</Button>				
+			}
+			else {
+				return <Button onClick ={this.handleSave}>Save</Button>;	
+			}
+		} 
+	}
+
+
 	handleType(e) {
 		const type = e.target.getAttribute('data-type');
+		if (!this.props.saved) {	
+			if (type === 'fixtures') {
+ 				this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
+ 			}
+ 			else if (type === 'players') {
+ 				this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
+ 			}}
 		this.setState({type});
 	}
 
 	returnData () {
 		if (this.state.type === 'fixtures'){
-			return <Teams_Fixtures data = {this.props.teamFixtures} />
+			return <Teams_Fixtures name = {this.props.data.name} data = {this.props.teamFixtures} />
 		}
 		else if (this.state.type === 'players'){
-			return <Teams_Players data = {this.props.teamPlayers}/>
+			return <Teams_Players name = {this.props.data.name} data = {this.props.teamPlayers}/>
 		}
 	}
 
@@ -39,18 +72,17 @@ class Teams_Info extends React.Component {
 				<div className='data'>
 					<img width='150px' height= '150px' src={this.props.data.crestUrl}/>
 					<h3>{this.props.data.name}</h3>
-						{this.props.saved ? 
-						<Button onClick = {()=>this.props.removeTeam(this.props.index)}>
-						Delete
-						</Button>
-						:
 						<div className='btnGroup'>
-						<Button data-type='fixtures' onClick = {this.handleType} >Fixtures</Button>
-						<Button data-type='players' onClick = {this.handleType} >Players</Button>	
-						{this.state.type && <Button onClick={()=>this.props.addTeam(this.props.data, this.props.teamData)}>
-						Save
-						</Button>}					
-					</div>}	
+							<Button data-type='fixtures' onClick = {this.handleType} >Fixtures</Button>
+							<Button data-type='players' onClick = {this.handleType} >Players</Button>
+							{this.props.saved ? 
+							<Button onClick = {()=>this.props.removeTeam(this.props.index)}>
+							Delete
+							</Button>
+							:
+							this.changeBtns()
+							}	
+						</div>
 				</div>}
 				{this.returnData()}
 		</div>
@@ -58,10 +90,16 @@ class Teams_Info extends React.Component {
 	}
 }
 
+const mapStateToProps = (state) => {
+   return {
+    leagues: state.leagues.leagues,
+    teams: state.teams.teams
+   };
+};
 
 const mapDispatchToProps = (dispatch) => {
    return bindActionCreators({ addTeam, removeTeam }, dispatch); 
 };
 
 
-export default connect(null, mapDispatchToProps)(Teams_Info);
+export default connect(mapStateToProps, mapDispatchToProps)(Teams_Info);
