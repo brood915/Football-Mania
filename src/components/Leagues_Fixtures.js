@@ -13,7 +13,7 @@ const Leagues_Fixtures = (props) => (
 		Delete
 		</Button>
 		:
-		<Button onClick = {()=>props.addLeague(props.data, 'fixtures')}>
+		<Button onClick = {()=>props.addLeague(props.data, 'fixtures', props.leagueName)}>
 		Save
 		</Button>}
 		    <table>

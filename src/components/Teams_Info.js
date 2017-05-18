@@ -21,19 +21,24 @@ class Teams_Info extends React.Component {
 	handleSave () {
 		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
 		this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
-		console.log(this.props.teamFixtures, this.props.teamPlayers);
-		// this.props.addTeam(this.props.data, this.props.teamData)
+
+		setTimeout(() => { // wait for updated props bf adding to redux state
+			this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures);
+			console.log(this.props.teams);
+			console.log(this.props.teamPlayers, this.props.teamFixtures);
+		}, 1000);   		
 	}
 
 	
 	handleType(e) {
 		const type = e.target.getAttribute('data-type');
-		if (type === 'fixtures') {
- 			this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
- 		}
- 		else if (type === 'players') {
- 			this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
- 		}
+		if (!this.props.saved) {	
+			if (type === 'fixtures') {
+ 				this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
+ 			}
+ 			else if (type === 'players') {
+ 				this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
+ 			}}
 		this.setState({type});
 	}
 
@@ -53,18 +58,19 @@ class Teams_Info extends React.Component {
 				<div className='data'>
 					<img width='150px' height= '150px' src={this.props.data.crestUrl}/>
 					<h3>{this.props.data.name}</h3>
-						{this.props.saved ? 
-						<Button onClick = {()=>this.props.removeTeam(this.props.index)}>
-						Delete
-						</Button>
-						:
 						<div className='btnGroup'>
-						<Button data-type='fixtures' onClick = {this.handleType} >Fixtures</Button>
-						<Button data-type='players' onClick = {this.handleType} >Players</Button>	
-						<Button onClick={this.handleSave}>
-						Save
-						</Button>				
-					</div>}	
+							<Button data-type='fixtures' onClick = {this.handleType} >Fixtures</Button>
+							<Button data-type='players' onClick = {this.handleType} >Players</Button>
+							{this.props.saved ? 
+							<Button onClick = {()=>this.props.removeTeam(this.props.index)}>
+							Delete
+							</Button>
+							:
+							<Button onClick={this.handleSave}>
+							Save
+							</Button>				
+							}	
+						</div>
 				</div>}
 				{this.returnData()}
 		</div>
@@ -72,10 +78,16 @@ class Teams_Info extends React.Component {
 	}
 }
 
+const mapStateToProps = (state) => {
+   return {
+    leagues: state.leagues.leagues,
+    teams: state.teams.teams
+   };
+};
 
 const mapDispatchToProps = (dispatch) => {
    return bindActionCreators({ addTeam, removeTeam }, dispatch); 
 };
 
 
-export default connect(null, mapDispatchToProps)(Teams_Info);
+export default connect(mapStateToProps, mapDispatchToProps)(Teams_Info);

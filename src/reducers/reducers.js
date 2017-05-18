@@ -38,9 +38,9 @@ function teams (state = initialState, action) {
         teams: [
           ...state.teams,
           {
-            team: action.team,
             teamInfo: action.teamInfo,
-            teamData: action.teamData,
+            teamPlayers: action.teamPlayers,
+            teamFixtures: action.teamFixtures,
             index: index++
           }
         ]
