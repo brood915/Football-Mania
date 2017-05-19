@@ -10,7 +10,7 @@ const Leagues_Table = (props) => {
 		each.league.leagueCaption === props.data.leagueCaption);
 
 		if (found) {
-			btn = <Button>Already Saved</Button>
+			btn = <Button>Saved!</Button>
 		}
 		else {
 			btn = <Button onClick = {()=>props.addLeague(props.data, 'tables')}>

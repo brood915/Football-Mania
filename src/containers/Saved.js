@@ -19,7 +19,7 @@ const Saved = (props) => {
   return (
   <div className='mainContent'>
     {props.leagues.length > 0 && 
-    <div>
+    <div className ='savedLeagues'>
         <div className='saved'>
           <h1 className={fixtures.length > 0 ? '' : 'hide'}>League Upcoming Fixtures</h1>
           {fixtures.map((each,index) => (<Leagues_Fixtures leagueName = {each.leagueName} removeLeague = {props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}

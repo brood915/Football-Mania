@@ -38,10 +38,14 @@ body, html, #app, #main {
 }
 
 
-.data, .saved, .center {
+.data, .center {
 	@include center();
 }
 
+
+.saved, .savedLeagues {
+	width: 100%;
+}
 
 .saved h1 {
 	width: 100%;
@@ -320,12 +324,8 @@ media queries
 
 
 	.saved {
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: flex-start;
-
 		.dataContainer {
-			margin: 10px;
+			margin: 30px;
 		}
 	}
 
