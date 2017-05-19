@@ -11,7 +11,8 @@ class Teams_Info extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			type:''
+			type:'',
+			saved: false
 		}
 
 		this.handleType = this.handleType.bind(this);
@@ -19,14 +20,14 @@ class Teams_Info extends React.Component {
 	}
 
 	handleSave () {
-		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
-		this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
-
-		setTimeout(() => { // wait for updated props bf adding to redux state
-			this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures);
-			console.log(this.props.teams);
-		}, 1000);  
-	}
+		this.setState({saved:true}); //so btn changes right away after click
+		
+		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures')
+		.then
+		(()=>this.props.getData(this.props.data['_links'].players.href, 'teamPlayers'))
+		.then
+		(()=>this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures));           
+}
 
 	changeBtns () {
 		if (!this.props.saved) { //to render diff btns
@@ -34,8 +35,8 @@ class Teams_Info extends React.Component {
 			let found;
 			found = this.props.teams.some((each)=>
 			each.teamInfo.name === this.props.data.name);
-			if (found) {
-				return <Button>Already Saved</Button>				
+			if (found || this.state.saved === true) {
+				return <Button>Saved!</Button>				
 			}
 			else {
 				return <Button onClick ={this.handleSave}>Save</Button>;	
