@@ -19,23 +19,23 @@ class Teams_Info extends React.Component {
 	}
 
 	handleSave () {
-		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures');
-		this.props.getData(this.props.data['_links'].players.href, 'teamPlayers');
 
-		setTimeout(() => { // wait for updated props bf adding to redux state
-			this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures);
-			console.log(this.props.teams);
-		}, 1000);  
-	}
+		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures')
+		.then
+		(()=>this.props.getData(this.props.data['_links'].players.href, 'teamPlayers'))
+		.then
+		(()=>this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures));
+	          
+}
 
 	changeBtns () {
 		if (!this.props.saved) { //to render diff btns
 		// only if this component is rendered thru Teams container
-			let found;
+			let found = true;
 			found = this.props.teams.some((each)=>
 			each.teamInfo.name === this.props.data.name);
-			if (found) {
-				return <Button>Already Saved</Button>				
+			if (found === true) {
+				return <Button>Saved!</Button>				
 			}
 			else {
 				return <Button onClick ={this.handleSave}>Save</Button>;	
@@ -56,12 +56,19 @@ class Teams_Info extends React.Component {
 		this.setState({type});
 	}
 
+	hide () {
+		this.setState({type:'hidden'});
+	}
+	
 	returnData () {
 		if (this.state.type === 'fixtures'){
 			return <Teams_Fixtures name = {this.props.data.name} data = {this.props.teamFixtures} />
 		}
 		else if (this.state.type === 'players'){
 			return <Teams_Players name = {this.props.data.name} data = {this.props.teamPlayers}/>
+		}
+		else {
+			return null;
 		}
 	}
 
@@ -81,7 +88,8 @@ class Teams_Info extends React.Component {
 							</Button>
 							:
 							this.changeBtns()
-							}	
+						}
+						{this.props.saved && <Button className = {(this.state.type === 'hidden' || this.state.type === '') ? 'hide' : ''} onClick = {this.hide.bind(this)}>Hide</Button>	}
 						</div>
 				</div>}
 				{this.returnData()}

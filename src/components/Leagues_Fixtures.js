@@ -12,7 +12,7 @@ const Leagues_Fixtures = (props) => {
 		each.league['_links'].self.href === props.data['_links'].self.href);
 
 		if (found) {
-			btn = <Button>Already Saved</Button>
+			btn = <Button>Saved!</Button>
 		}
 		else {
 			btn = <Button onClick = {()=>props.addLeague(props.data, 'fixtures', props.leagueName)}>

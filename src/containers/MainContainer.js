@@ -27,7 +27,7 @@ class MainContainer extends React.Component {
 	}
 
 	getData (url, state) {
-		fetch(url, {
+		return fetch(url, {
   		headers: {
     		'X-Auth-Token': '93ec85906d8a472894cad03fdadb19b9'
   			}
