@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import Teams_Results from './Teams_Results';
 
 
 class Teams_Fixtures extends React.Component {
@@ -29,6 +30,7 @@ render() {
                   <span className = 'resultColor' style = {{'borderLeft': '10px solid red'}}> = L</span>
                   <span className = 'resultColor' style = {{'borderLeft': '10px solid gray'}}> = D</span>
             </div>
+            <Teams_Results fixtures = {this.props.data.fixtures} />
                   <Button className='btnGroup' onClick={this.filterFixtures.bind(this)}>
                   {this.state.upcoming === false ? 'Upcoming' : 'Full'}
                   </Button>
