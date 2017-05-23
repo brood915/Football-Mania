@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import moment from 'moment';
 
 
 const Leagues_Fixtures = (props) => {
@@ -43,7 +44,7 @@ const Leagues_Fixtures = (props) => {
       .filter((each,index) => (each.status !== 'FINISHED'))
       .map((each,index) => (
       	<tr key = {index.toString()}>
-      		<td>{each.date}</td>
+      		<td>{moment(each.date).format("YYYY-MM-DD HH:mm")}</td>
       		<td>{each.homeTeamName}</td>
       		<td>{each.awayTeamName}</td>
 

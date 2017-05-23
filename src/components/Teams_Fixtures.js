@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import Teams_Results from './Teams_Results';
+import moment from 'moment';
 
 
 class Teams_Fixtures extends React.Component {
@@ -83,7 +84,7 @@ render() {
 
             return (
                   <tr key = {index.toString()}>
-                        <td>{each.date}</td>
+                        <td>{moment(each.date).format("YYYY-MM-DD HH:mm")}</td>
                         <td>{each.homeTeamName}</td>
                         <td>{each.awayTeamName}</td>
                         <td style = {{'color': getResult()}}>{each.result.goalsHomeTeam !== null ? each.result.goalsHomeTeam + ':' + each.result.goalsAwayTeam : 'NA'}</td>
