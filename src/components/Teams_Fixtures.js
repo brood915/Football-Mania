@@ -30,7 +30,7 @@ render() {
                   <span className = 'resultColor' style = {{'borderLeft': '10px solid red'}}> = L</span>
                   <span className = 'resultColor' style = {{'borderLeft': '10px solid gray'}}> = D</span>
             </div>
-            <Teams_Results fixtures = {this.props.data.fixtures} />
+            <Teams_Results fixtures = {this.props.data.fixtures} name = {this.props.name} />
                   <Button className='btnGroup' onClick={this.filterFixtures.bind(this)}>
                   {this.state.upcoming === false ? 'Upcoming' : 'Full'}
                   </Button>
