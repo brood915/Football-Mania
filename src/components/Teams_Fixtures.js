@@ -101,4 +101,9 @@ render() {
 }
 }
 
+Teams_Fixtures.propTypes = {
+    data: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired
+}
+
 export default Teams_Fixtures;

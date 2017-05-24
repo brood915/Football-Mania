@@ -110,4 +110,16 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
+
+Teams_Info.propTypes = {
+	data: PropTypes.object.isRequired,
+    getData: PropTypes.func,
+	teams: PropTypes.array,
+	saved: PropTypes.string,
+	removeTeam: PropTypes.func,
+	teamFixtures: PropTypes.object.isRequired,
+	teamPlayers: PropTypes.object.isRequired,
+	addTeam: PropTypes.func
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(Teams_Info);

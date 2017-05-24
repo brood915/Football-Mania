@@ -20,8 +20,7 @@ class Saved extends React.Component {
 
   handleChange (e) {
         let selected = e.target.value;
-        this.setState({selected},()=>console.log(this.state.selected));
-        
+        this.setState({selected});   
     }
 
   render () {
@@ -43,7 +42,7 @@ class Saved extends React.Component {
           {tables.map((each,index) => (<Leagues_Table removeLeague = {this.props.removeLeague} index = {each.index} saved = 'true' key = {index.toString()} data = {each.league}/>))}
         </div>
     </div>}
-    {this.props.teams.length > 0 &&
+    {teams.length > 0 &&
     <div className={'saved ' + (this.state.selected === 'teams' || this.state.selected === 'all' ? '' : 'hide')}>
         <h1 className={teams.length > 0 ? '' : 'hide'}>Teams</h1>
           {teams.map((each,index) => 
@@ -69,5 +68,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
    return bindActionCreators({ removeLeague, removeTeam }, dispatch); 
 };
+
+
+Saved.propTypes = {
+  teams: PropTypes.array,
+  leagues: PropTypes.array,
+  removeLeague: PropTypes.func.isRequired,
+  removeTeam: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Saved);
