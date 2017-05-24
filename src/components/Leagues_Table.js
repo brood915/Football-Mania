@@ -24,7 +24,7 @@ const Leagues_Table = (props) => {
 		{(props.data.standing) && 
       <div className='data'>
 	  	<h3>{props.data.leagueCaption}</h3>
-      	{props.saved ? 
+      	{props.saved ? //if rendered thru saved container
 		<Button onClick = {()=>props.removeLeague(props.index)}>
 		Delete
 		</Button>
@@ -64,6 +64,13 @@ const Leagues_Table = (props) => {
       }
 	</div>
 	)
+}
+
+Leagues_Table.propTypes = {
+  saved: PropTypes.string,
+  data: PropTypes.object.isRequired,
+  addLeague: PropTypes.func,
+  removeLeague: PropTypes.func
 }
 
 export default Leagues_Table;

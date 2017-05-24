@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, FormControl } from 'react-bootstrap';
 
-const Form = (props) => (  
+const Leagues_Form = (props) => (  
 		  <div className='mainContent'>
 		        <FormControl componentClass="select" placeholder="select" data-type={props.dataType}>
 		        	<option defaultValue>Find your league!</option>
@@ -16,6 +16,8 @@ const Form = (props) => (
 		  </div>
 	  );
 
+Leagues_Form.propTypes = {
+	dataType: PropTypes.string
+}
 
-
-export default Form;
+export default Leagues_Form;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Teams_Results extends React.Component {
     constructor(props) {
@@ -49,6 +50,12 @@ class Teams_Results extends React.Component {
             </div>
         );
     }
+}
+
+
+Teams_Results.propTypes = {
+    fixtures: PropTypes.array.isRequired,
+    name: PropTypes.string.isRequired
 }
 
 export default Teams_Results;

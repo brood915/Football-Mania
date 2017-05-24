@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { FormGroup, Radio } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 const Saved_Form = (props) => 
 { 
@@ -25,5 +26,9 @@ const Saved_Form = (props) =>
         </div>
     ); 
 }; 
+
+Saved_Form.propTypes = {
+    handleChange: PropTypes.func.isRequired
+}
 
 export default Saved_Form;

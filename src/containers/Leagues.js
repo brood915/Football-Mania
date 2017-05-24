@@ -56,5 +56,17 @@ const mapDispatchToProps = (dispatch) => {
    return bindActionCreators({ addLeague }, dispatch); 
 };
 
+Leagues.propTypes = {
+	data: PropTypes.object.isRequired,
+	getData: PropTypes.func.isRequired,
+	league: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]).isRequired,
+	getLeague: PropTypes.func.isRequired,
+	leagues: PropTypes.array,
+	addLeague: PropTypes.func,
+	leagueName: PropTypes.string.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leagues);

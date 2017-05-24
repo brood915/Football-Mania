@@ -35,4 +35,8 @@ const Teams_Players = (props) => (
 	</div>
 )
 
+Teams_Players.propTypes = {
+	data:PropTypes.object.isRequired
+}
+
 export default Teams_Players;

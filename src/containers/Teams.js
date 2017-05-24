@@ -34,6 +34,15 @@ const Teams = (props) => {
 		  	</div>)}
 
 
+Teams.propTypes = {
+  getData: PropTypes.func.isRequired,
+  resetTeamData: PropTypes.func.isRequired,
+  getLeague: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+  subData: PropTypes.object.isRequired,
+  teamFixtures: PropTypes.object.isRequired,
+  teamPlayers: PropTypes.object.isRequired
+}
 
 
 export default Teams;

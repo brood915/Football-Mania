@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import moment from 'moment';
 
-
 const Leagues_Fixtures = (props) => {
 	let btn; //to render different btns based on whether it is already saved or not
 	if (!props.saved && props.data['_links']){ 
@@ -27,7 +26,7 @@ const Leagues_Fixtures = (props) => {
 		{(props.data.fixtures) && 
 		<div className='data'>
 		<h3>{props.leagueName}</h3>
-		{props.saved ? 
+		{props.saved ? //if rendered thru saved container
 		<Button onClick = {()=>props.removeLeague(props.index)}>
 		Delete
 		</Button>
@@ -59,5 +58,16 @@ const Leagues_Fixtures = (props) => {
       }
 	</div>
 )}
+
+
+Leagues_Fixtures.propTypes = {
+  saved: PropTypes.string,
+  data: PropTypes.object.isRequired,
+  savedLeagues: PropTypes.array,
+  addLeague: PropTypes.func,
+  removeLeague: PropTypes.func,
+  leagueName: PropTypes.string.isRequired
+}
+
 
 export default Leagues_Fixtures;
