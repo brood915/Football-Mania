@@ -13,7 +13,7 @@ const Leagues_Table = (props) => {
 			btn = <Button>Saved!</Button>
 		}
 		else {
-			btn = <Button onClick = {()=>props.addLeague(props.data, 'tables')}>
+			btn = <Button onClick = {()=>props.addLeague(props.data, 'tables', "", props.url)}>
 		Save
 		</Button>
 		}
@@ -70,7 +70,8 @@ Leagues_Table.propTypes = {
   saved: PropTypes.string,
   data: PropTypes.object.isRequired,
   addLeague: PropTypes.func,
-  removeLeague: PropTypes.func
+  removeLeague: PropTypes.func,
+  url: PropTypes.string
 }
 
 export default Leagues_Table;

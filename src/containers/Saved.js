@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeLeague, removeTeam } from '../actions/actions';
+import { removeLeague, removeTeam, update  } from '../actions/actions';
 import Teams_Info from '../components/Teams_Info';
 import Leagues_Fixtures from '../components/Leagues_Fixtures';
 import Leagues_Table from '../components/Leagues_Table';
 import Teams_Fixtures from '../components/Teams_Fixtures';
 import Teams_Players from '../components/Teams_Players';
 import Saved_Form from '../components/Saved_Form';
+import { Button } from 'react-bootstrap';
+import FontAwesome from 'react-fontawesome';
 
 class Saved extends React.Component {
   constructor(props) {
@@ -18,9 +20,15 @@ class Saved extends React.Component {
     }
   }
 
+
+  update () {
+        const urls = this.props.leagues.map(each=>each.url); 
+        this.props.update(urls);
+  }
+
   handleChange (e) {
         let selected = e.target.value;
-        this.setState({selected});   
+        this.setState({selected});
     }
 
   render () {
@@ -28,9 +36,11 @@ class Saved extends React.Component {
     const tables = this.props.leagues.filter((each,index) => (each.type === 'tables'));
     const teams = this.props.teams;
 
-    return (
+if (!this.props.loading)//if not loading
+    {return (
   <div className='mainContent'>
     <Saved_Form handleChange = {this.handleChange.bind(this)}/>
+    {(this.props.leagues.length > 0 || this.props.teams.length > 0) && <Button onClick = {this.update.bind(this)}>Update Data!</Button> }
     {this.props.leagues.length > 0 && 
     <div className ='savedLeagues'>
         <div className = {'saved ' + (this.state.selected === 'fixtures' || this.state.selected === 'all' ? '' : 'hide')}>
@@ -49,24 +59,39 @@ class Saved extends React.Component {
             (
             <Teams_Info removeTeam = {this.props.removeTeam} teamPlayers = {each.teamPlayers} teamFixtures = {each.teamFixtures} index = {each.index} saved = 'true' key = {index.toString()} data = {each.teamInfo}/>))}
     </div>}
-    {this.props.leagues.length === 0 && this.props.teams.length === 0 &&
+    {this.props.leagues.length === 0 && this.props.teams.length === 0 && //when no data saved
       <h1>Add your favorite information here!</h1>
     }
   </div>
-)}}
+)}
+
+else if (this.props.loading) { //if loading
+  return <div className='mainContent'>
+				    <FontAwesome name='spinner' size='4x' pulse/>
+         </div>
+}
+
+else if (this.props.error) { //if error occured
+ return <h1 className='mainContent'>Something Went Wrong!!</h1>
+}
+
+
+}}
 
 
 
 const mapStateToProps = (state) => {
    return {
     leagues: state.leagues.leagues,
-    teams: state.teams.teams
+    teams: state.teams.teams,
+    loading: state.handleLoading,
+    error: state.handleError
    };
 };
 
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({ removeLeague, removeTeam }, dispatch); 
+   return bindActionCreators({ removeLeague, removeTeam, update }, dispatch); 
 };
 
 

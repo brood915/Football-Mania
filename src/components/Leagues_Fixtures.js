@@ -15,7 +15,7 @@ const Leagues_Fixtures = (props) => {
 			btn = <Button>Saved!</Button>
 		}
 		else {
-			btn = <Button onClick = {()=>props.addLeague(props.data, 'fixtures', props.leagueName)}>
+			btn = <Button onClick = {()=>props.addLeague(props.data, 'fixtures', props.leagueName, props.url)}>
 		Save
 		</Button>
 		}
@@ -66,7 +66,8 @@ Leagues_Fixtures.propTypes = {
   savedLeagues: PropTypes.array,
   addLeague: PropTypes.func,
   removeLeague: PropTypes.func,
-  leagueName: PropTypes.string.isRequired
+  leagueName: PropTypes.string.isRequired,
+  url: PropTypes.string
 }
 
 
