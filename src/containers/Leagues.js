@@ -28,6 +28,8 @@ class Leagues extends React.Component {
 	}
 
     render() {
+		const tableURL = 'https://api.football-data.org/v1/competitions/' + this.props.league + '/leagueTable';
+		const fixturesURL = 'https://api.football-data.org/v1/competitions/' + this.props.league + '/fixtures';
   		return(<div className='mainContent'>
 		  		    <form onChange = {this.props.getLeague}>
 		  				<FormGroup controlId="formControlsSelect">
@@ -39,7 +41,7 @@ class Leagues extends React.Component {
 		        		<Button data-type = 'tables' onClick = {this.handleClick.bind(this)}>Get the table!</Button>
 		        		<Button data-type = 'fixtures' onClick = {this.handleClick.bind(this)}>Upcoming Matches!</Button>
 		        		</div>
-		        		{this.state.type === 'tables' ? <Leagues_Table savedLeagues = {this.props.leagues} addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} /> : <Leagues_Fixtures savedLeagues = {this.props.leagues} addLeague = {this.props.addLeague} league = {this.props.league} leagueName = {this.props.leagueName} data = {this.props.data} />}
+		        		{this.state.type === 'tables' ? <Leagues_Table url = {tableURL} savedLeagues = {this.props.leagues} addLeague = {this.props.addLeague} league = {this.props.league} data = {this.props.data} /> : <Leagues_Fixtures url = {fixturesURL} savedLeagues = {this.props.leagues} addLeague = {this.props.addLeague} league = {this.props.league} leagueName = {this.props.leagueName} data = {this.props.data} />}
 		        		
 		  		  </div>);
 }

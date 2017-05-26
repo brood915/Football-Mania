@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { autoRehydrate, persistStore } from 'redux-persist';
 import { Provider } from 'react-redux';
 import app from './reducers/reducers';
 import MainContainer from './containers/MainContainer';
+import thunk from 'redux-thunk';
 
 import {
   BrowserRouter as Router,
@@ -13,10 +14,13 @@ import {
 
 const store = createStore(
   app,
-  compose(autoRehydrate())
+  compose(
+    applyMiddleware(thunk),
+    autoRehydrate()
+    )
 )
 
-persistStore(store); //local storage
+persistStore(store, {whitelist: ['leagues', 'teams']}); //local storage
 
 ReactDOM.render(
     <Provider store={store}>

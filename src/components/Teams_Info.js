@@ -18,6 +18,7 @@ class Teams_Info extends React.Component {
 		this.handleSave = this.handleSave.bind(this);		
 	}
 
+
 	handleSave () {
 
 		this.props.getData(this.props.data['_links'].fixtures.href, 'teamFixtures')
@@ -25,8 +26,8 @@ class Teams_Info extends React.Component {
 		(()=>this.props.getData(this.props.data['_links'].players.href, 'teamPlayers'))
 		.then
 		(()=>this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures));
-	          
-}
+		console.log(this.props.leagues)          
+	}
 
 	changeBtns () {
 		if (!this.props.saved) { //to render diff btns
