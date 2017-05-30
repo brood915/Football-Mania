@@ -6,7 +6,8 @@ import { ADD_LEAGUE,
         UPDATE_TEAMFIXTURES,
         UPDATE_TEAMPLAYERS,
         LOADING,
-        ERROR
+        ERROR,
+        RESET
         } from './actionTypes';
 
 
@@ -55,6 +56,12 @@ export function handleLoading(bool) {
          return {
           type: LOADING,
           loading: bool
+         }
+}
+
+export function reset() {
+         return {
+          type: RESET
          }
 }
 

@@ -58,6 +58,10 @@ function leagues (state = initialState, action) {
           }
         }) 
       })   
+    case 'RESET':
+      return Object.assign({}, state, {
+        leagues: []
+      })  
     default:
       return state      
   }
@@ -105,7 +109,11 @@ function teams (state = initialState, action) {
             return each;
           }
         }) 
-      })              
+      }) 
+    case 'RESET':
+      return Object.assign({}, state, {
+        teams: []
+      })                    
     default:
       return state      
   }

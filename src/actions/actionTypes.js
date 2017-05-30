@@ -7,3 +7,4 @@ export const UPDATE_TEAMFIXTURES = 'UPDATE_TEAMFIXTURES';
 export const UPDATE_TEAMPLAYERS = 'UPDATE_TEAMPLAYERS';
 export const ERROR = 'ERROR';
 export const LOADING = 'LOADING';
+export const RESET = 'RESET';

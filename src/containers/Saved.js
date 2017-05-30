@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeLeague, removeTeam, update  } from '../actions/actions';
+import { removeLeague, removeTeam, update, reset } from '../actions/actions';
 import Teams_Info from '../components/Teams_Info';
 import Leagues_Fixtures from '../components/Leagues_Fixtures';
 import Leagues_Table from '../components/Leagues_Table';
@@ -44,7 +44,11 @@ if (!this.props.loading && !this.props.error)//if not loading
     {return (
   <div className='mainContent'>
     <Saved_Form handleChange = {this.handleChange.bind(this)}/>
-    {(this.props.leagues.length > 0 || this.props.teams.length > 0) && <Button onClick = {this.update.bind(this)}>Update Data!</Button> }
+    {(this.props.leagues.length > 0 || this.props.teams.length > 0) && 
+      <div>
+      <Button onClick = {this.update.bind(this)}>Update Data!</Button>
+      <Button onClick = {this.props.reset}>Reset</Button>
+      </div> }
     {this.props.leagues.length > 0 && 
     <div className ='savedLeagues'>
         <div className = {'saved ' + (this.state.selected === 'fixtures' || this.state.selected === 'all' ? '' : 'hide')}>
@@ -95,7 +99,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({ removeLeague, removeTeam, update }, dispatch); 
+   return bindActionCreators({ removeLeague, removeTeam, update, reset }, dispatch); 
 };
 
 
