@@ -9,17 +9,27 @@ import Leagues_Table from '../components/Leagues_Table';
 import Teams_Fixtures from '../components/Teams_Fixtures';
 import Teams_Players from '../components/Teams_Players';
 import Saved_Form from '../components/Saved_Form';
+import Saved_Modal from '../components/Saved_Modal';
 import { Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
+
 
 class Saved extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'all'
+      selected: 'all',
+      showModal: false
     }
   }
 
+  openModal () {
+    this.setState({showModal:true});
+  }
+
+  closeModal(){
+    this.setState({showModal:false});
+  }
 
   update () {
         const leagueURLs = this.props.leagues.map(each=>each.url);
@@ -43,11 +53,12 @@ class Saved extends React.Component {
 if (!this.props.loading && !this.props.error)//if not loading
     {return (
   <div className='mainContent'>
+    <Saved_Modal reset = {this.props.reset} showModal = {this.state.showModal} closeModal={this.closeModal.bind(this)}/>
     <Saved_Form handleChange = {this.handleChange.bind(this)}/>
     {(this.props.leagues.length > 0 || this.props.teams.length > 0) && 
       <div>
       <Button onClick = {this.update.bind(this)}>Update Data!</Button>
-      <Button onClick = {this.props.reset}>Reset</Button>
+      <Button onClick = {this.openModal.bind(this)}>Reset</Button>
       </div> }
     {this.props.leagues.length > 0 && 
     <div className ='savedLeagues'>
