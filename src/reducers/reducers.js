@@ -81,7 +81,31 @@ function teams (state = initialState, action) {
     case 'REMOVE_TEAM':
       return Object.assign({}, state, {
         teams: state.teams.filter((each)=>{return each.index !== action.index})
-      })      
+      })
+    case 'UPDATE_TEAMPLAYERS':
+          return Object.assign({}, state, {
+        teams: state.teams.map((each)=>{
+          if (each.teamInfo['_links'].players.href === action.url) {
+            const players = {teamPlayers: action.data};
+            return Object.assign({}, each, players);
+          }
+          else {
+            return each;
+          }
+        }) 
+      })
+    case 'UPDATE_TEAMFIXTURES':
+          return Object.assign({}, state, {
+        teams: state.teams.map((each)=>{
+          if (each.teamInfo['_links'].fixtures.href === action.url) {
+            const fixtures = {teamFixtures: action.data};
+            return Object.assign({}, each, fixtures);
+          }
+          else {
+            return each;
+          }
+        }) 
+      })              
     default:
       return state      
   }

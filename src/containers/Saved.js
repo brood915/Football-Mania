@@ -22,8 +22,12 @@ class Saved extends React.Component {
 
 
   update () {
-        const urls = this.props.leagues.map(each=>each.url); 
-        this.props.update(urls);
+        const leagueURLs = this.props.leagues.map(each=>each.url);
+        const teamFixturesURLs = this.props.teams.map(each=>each.teamInfo['_links'].fixtures.href);
+        const teamPlayersURLs = this.props.teams.map(each=>each.teamInfo['_links'].players.href);
+        const urls = [...leagueURLs, ...teamFixturesURLs, ...teamPlayersURLs];
+       this.props.update(urls);
+       console.log(this.props.teams);
   }
 
   handleChange (e) {
@@ -36,7 +40,7 @@ class Saved extends React.Component {
     const tables = this.props.leagues.filter((each,index) => (each.type === 'tables'));
     const teams = this.props.teams;
 
-if (!this.props.loading)//if not loading
+if (!this.props.loading && !this.props.error)//if not loading
     {return (
   <div className='mainContent'>
     <Saved_Form handleChange = {this.handleChange.bind(this)}/>
