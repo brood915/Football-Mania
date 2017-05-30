@@ -3,9 +3,11 @@ import { ADD_LEAGUE,
         ADD_TEAM, 
         REMOVE_TEAM, 
         UPDATE_LEAGUES, 
-        UPDATE_TEAMS,
+        UPDATE_TEAMFIXTURES,
+        UPDATE_TEAMPLAYERS,
         LOADING,
-        ERROR
+        ERROR,
+        RESET
         } from './actionTypes';
 
 
@@ -22,8 +24,8 @@ export function removeLeague(index) {
 
 
 //action creators for teams
-export function addTeam(teamInfo, teamPlayers, teamFixtures,url) {
-  return { type: ADD_TEAM, teamInfo, teamPlayers, teamFixtures, url }
+export function addTeam(teamInfo, teamPlayers, teamFixtures) {
+  return { type: ADD_TEAM, teamInfo, teamPlayers, teamFixtures}
 }
 
 export function removeTeam(index) {
@@ -34,9 +36,14 @@ export function updateLeagues (data, url) {
   return {type: UPDATE_LEAGUES, data, url}
 }
 
-export function updateTeams (data, url) {
-  return {type: UPDATE_TEAMS, data, url}
+export function updateTeamFixtures (data, url) {
+  return {type: UPDATE_TEAMFIXTURES, data, url}
 }
+
+export function updateTeamPlayers (data, url) {
+  return {type: UPDATE_TEAMPLAYERS, data, url}
+}
+
 
 export function handleError(bool) {
          return {
@@ -49,6 +56,12 @@ export function handleLoading(bool) {
          return {
           type: LOADING,
           loading: bool
+         }
+}
+
+export function reset() {
+         return {
+          type: RESET
          }
 }
 
@@ -65,12 +78,19 @@ export function update (urls) {
          .then((response)=>response.json())
          .then((data) => {
 
-        if (data.fixtures || data.standing) { //if either fixtures/standing data available
+        if (data['_links'].competition && (data.fixtures || data.standing)) { //if either fixtures/standing data available
           dispatch(updateLeagues(data, each));
+        }
+        else if (data['_links'].team && data.fixtures) { //for team fixtures
+          dispatch(updateTeamFixtures(data, each));
+        }
+
+        else if (data['_links'].team && data.players) { // for team players
+          dispatch(updateTeamPlayers(data, each));
         }
 
          })))
          .then(()=> dispatch(handleLoading(false)))
-         .catch(() => dispatch(handleError(true)))
+         .catch(() =>{dispatch(handleLoading(false)); dispatch(handleError(true));})
   } 
 }

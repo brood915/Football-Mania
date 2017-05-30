@@ -2,28 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeLeague, removeTeam, update  } from '../actions/actions';
+import { removeLeague, removeTeam, update, reset } from '../actions/actions';
 import Teams_Info from '../components/Teams_Info';
 import Leagues_Fixtures from '../components/Leagues_Fixtures';
 import Leagues_Table from '../components/Leagues_Table';
 import Teams_Fixtures from '../components/Teams_Fixtures';
 import Teams_Players from '../components/Teams_Players';
 import Saved_Form from '../components/Saved_Form';
+import Saved_Modal from '../components/Saved_Modal';
 import { Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
+
 
 class Saved extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'all'
+      selected: 'all',
+      showModal: false
     }
   }
 
+  openModal () {
+    this.setState({showModal:true});
+  }
+
+  closeModal(){
+    this.setState({showModal:false});
+  }
 
   update () {
-        const urls = this.props.leagues.map(each=>each.url); 
-        this.props.update(urls);
+        const leagueURLs = this.props.leagues.map(each=>each.url);
+        const teamFixturesURLs = this.props.teams.map(each=>each.teamInfo['_links'].fixtures.href);
+        const teamPlayersURLs = this.props.teams.map(each=>each.teamInfo['_links'].players.href);
+        const urls = [...leagueURLs, ...teamFixturesURLs, ...teamPlayersURLs];
+       this.props.update(urls);
+       console.log(this.props.teams);
   }
 
   handleChange (e) {
@@ -36,11 +50,16 @@ class Saved extends React.Component {
     const tables = this.props.leagues.filter((each,index) => (each.type === 'tables'));
     const teams = this.props.teams;
 
-if (!this.props.loading)//if not loading
+if (!this.props.loading && !this.props.error)//if not loading
     {return (
   <div className='mainContent'>
-    <Saved_Form handleChange = {this.handleChange.bind(this)}/>
-    {(this.props.leagues.length > 0 || this.props.teams.length > 0) && <Button onClick = {this.update.bind(this)}>Update Data!</Button> }
+    <Saved_Modal reset = {this.props.reset} showModal = {this.state.showModal} closeModal={this.closeModal.bind(this)}/>
+    {(this.props.leagues.length > 0 || this.props.teams.length > 0) && 
+      <div>
+      <Saved_Form handleChange = {this.handleChange.bind(this)}/>
+      <Button onClick = {this.update.bind(this)}>Update Data!</Button>
+      <Button onClick = {this.openModal.bind(this)}>Reset</Button>
+      </div> }
     {this.props.leagues.length > 0 && 
     <div className ='savedLeagues'>
         <div className = {'saved ' + (this.state.selected === 'fixtures' || this.state.selected === 'all' ? '' : 'hide')}>
@@ -91,7 +110,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({ removeLeague, removeTeam, update }, dispatch); 
+   return bindActionCreators({ removeLeague, removeTeam, update, reset }, dispatch); 
 };
 
 

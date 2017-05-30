@@ -26,7 +26,7 @@ class Teams_Info extends React.Component {
 		(()=>this.props.getData(this.props.data['_links'].players.href, 'teamPlayers'))
 		.then
 		(()=>this.props.addTeam(this.props.data, this.props.teamPlayers, this.props.teamFixtures));
-		console.log(this.props.leagues)          
+		console.log(this.props.leagues);          
 	}
 
 	changeBtns () {
