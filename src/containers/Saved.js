@@ -54,9 +54,9 @@ if (!this.props.loading && !this.props.error)//if not loading
     {return (
   <div className='mainContent'>
     <Saved_Modal reset = {this.props.reset} showModal = {this.state.showModal} closeModal={this.closeModal.bind(this)}/>
-    <Saved_Form handleChange = {this.handleChange.bind(this)}/>
     {(this.props.leagues.length > 0 || this.props.teams.length > 0) && 
       <div>
+      <Saved_Form handleChange = {this.handleChange.bind(this)}/>
       <Button onClick = {this.update.bind(this)}>Update Data!</Button>
       <Button onClick = {this.openModal.bind(this)}>Reset</Button>
       </div> }
