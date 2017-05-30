@@ -7,9 +7,8 @@ and to save them to the local storage so they can see what they want all at once
 [[Plans for the future]]
 Add authorization
 Use express and mongodb instead of local storage
+Find free API for players
 Write algorithms to suggest a player to users
-Add a forum
-Allows users to compete with each other by joining their favorite teams
 ```
 
 
