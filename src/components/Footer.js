@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Footer() {
-    return (
+const Footer = () => (
     	<footer>
     		2017 © KEVIN JANG. ALL RIGHTS RESERVED.
-    	</footer>
-    )
-}
-
+    	</footer>	
+)
 
 export default Footer;
