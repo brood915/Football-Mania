@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import Leagues_BestNWorst from './Leagues_BestNWorst';
 
 const Leagues_Table = (props) => {
 	let btn; //to render different btns based on whether it is already saved or not
@@ -30,6 +31,7 @@ const Leagues_Table = (props) => {
 		</Button>
 		:
 		btn}
+      <Leagues_BestNWorst data={props.data.standing} />
       <table>
       		<tbody>
         		<tr>
