@@ -8,8 +8,9 @@ import Leagues_Fixtures from '../components/Leagues_Fixtures';
 import Leagues_Table from '../components/Leagues_Table';
 import Teams_Fixtures from '../components/Teams_Fixtures';
 import Teams_Players from '../components/Teams_Players';
-import Saved_Form from '../components/Saved_Form';
+import Saved_Filter from '../components/Saved_Filter';
 import Saved_Modal from '../components/Saved_Modal';
+import Saved_Favorite from '../components/Saved_Favorite';
 import { Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 
@@ -56,7 +57,7 @@ if (!this.props.loading && !this.props.error)//if not loading
     <Saved_Modal reset = {this.props.reset} showModal = {this.state.showModal} closeModal={this.closeModal.bind(this)}/>
     {(this.props.leagues.length > 0 || this.props.teams.length > 0) && 
       <div>
-      <Saved_Form handleChange = {this.handleChange.bind(this)}/>
+      <Saved_Filter handleChange = {this.handleChange.bind(this)}/>
       <Button onClick = {this.update.bind(this)}>Update Data!</Button>
       <Button onClick = {this.openModal.bind(this)}>Reset</Button>
       </div> }
@@ -79,7 +80,7 @@ if (!this.props.loading && !this.props.error)//if not loading
             <Teams_Info removeTeam = {this.props.removeTeam} teamPlayers = {each.teamPlayers} teamFixtures = {each.teamFixtures} index = {each.index} saved = 'true' key = {index.toString()} data = {each.teamInfo}/>))}
     </div>}
     {this.props.leagues.length === 0 && this.props.teams.length === 0 && //when no data saved
-      <h1>Add your favorite information here!</h1>
+      <Saved_Favorite />
     }
   </div>
 )}

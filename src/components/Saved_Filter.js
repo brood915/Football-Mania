@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, Radio } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const Saved_Form = (props) => 
+const Saved_Filter = (props) => 
 { 
     return (
         <div>
@@ -27,8 +27,8 @@ const Saved_Form = (props) =>
     ); 
 }; 
 
-Saved_Form.propTypes = {
+Saved_Filter.propTypes = {
     handleChange: PropTypes.func.isRequired
 }
 
-export default Saved_Form;
+export default Saved_Filter;
