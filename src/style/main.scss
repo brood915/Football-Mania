@@ -85,6 +85,10 @@ h3,h4 {
 	display: flex !important;
 }
 
+.block {
+		display:block;
+	}
+
 /*****
 imgs, icons
 ******/
@@ -335,6 +339,10 @@ media queries
 		.dataContainer {
 			margin: 30px;
 		}
+	}
+
+	.block {
+		display: inline;
 	}
 
 	/*****
