@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeLeague, removeTeam, update, reset } from '../actions/actions';
+import { removeLeague, removeTeam, update, reset, getLeague } from '../actions/actions';
 import Teams_Info from '../components/Teams_Info';
 import Leagues_Fixtures from '../components/Leagues_Fixtures';
 import Leagues_Table from '../components/Leagues_Table';
@@ -80,7 +80,7 @@ if (!this.props.loading && !this.props.error)//if not loading
             <Teams_Info removeTeam = {this.props.removeTeam} teamPlayers = {each.teamPlayers} teamFixtures = {each.teamFixtures} index = {each.index} saved = 'true' key = {index.toString()} data = {each.teamInfo}/>))}
     </div>}
     {this.props.leagues.length === 0 && this.props.teams.length === 0 && //when no data saved
-      <Saved_Favorite />
+      <Saved_Favorite getLeague = {this.props.getLeague} teamNames = {this.props.teamNames} />
     }
   </div>
 )}
@@ -105,13 +105,14 @@ const mapStateToProps = (state) => {
     leagues: state.leagues.leagues,
     teams: state.teams.teams,
     loading: state.handleLoading,
-    error: state.handleError
+    error: state.handleError,
+    teamNames: state.teamNames.teamNames
    };
 };
 
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({ removeLeague, removeTeam, update, reset }, dispatch); 
+   return bindActionCreators({ removeLeague, removeTeam, update, reset, getLeague }, dispatch); 
 };
 
 
@@ -119,7 +120,9 @@ Saved.propTypes = {
   teams: PropTypes.array,
   leagues: PropTypes.array,
   removeLeague: PropTypes.func.isRequired,
-  removeTeam: PropTypes.func.isRequired
+  removeTeam: PropTypes.func.isRequired,
+  error: PropTypes.bool,
+  loading: PropTypes.bool
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Saved);

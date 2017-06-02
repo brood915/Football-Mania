@@ -8,3 +8,4 @@ export const UPDATE_TEAMPLAYERS = 'UPDATE_TEAMPLAYERS';
 export const ERROR = 'ERROR';
 export const LOADING = 'LOADING';
 export const RESET = 'RESET';
+export const GETTEAMS = 'GETTEAMS';
