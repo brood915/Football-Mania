@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 const initialState = {
 	leagues:[],
   teams: [],
-  index: 0
+  index: 0,
+  teamNames: []
 }
 
 
@@ -25,6 +26,19 @@ function handleLoading(state = false, action) {
     }
 }
 
+
+//allowing users to add data related to their fav team
+
+function teamNames (state = initialState, action) {
+    switch (action.type) {
+        case 'GETTEAMS':
+      return Object.assign({}, state, {
+        teamNames: [action.teams]
+      })
+        default:
+            return state;
+    }  
+}
 
 //managing leagues
 function leagues (state = initialState, action) {
@@ -121,7 +135,7 @@ function teams (state = initialState, action) {
 
 
 const app = combineReducers({
-  leagues, teams, handleError, handleLoading
+  leagues, teams, handleError, handleLoading, teamNames
 })
 
 export default app;

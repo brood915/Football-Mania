@@ -7,7 +7,8 @@ import { ADD_LEAGUE,
         UPDATE_TEAMPLAYERS,
         LOADING,
         ERROR,
-        RESET
+        RESET,
+        GETTEAMS
         } from './actionTypes';
 
 
@@ -32,6 +33,10 @@ export function removeTeam(index) {
   return { type: REMOVE_TEAM, index }
 }
 
+
+
+
+//for updating data
 export function updateLeagues (data, url) {
   return {type: UPDATE_LEAGUES, data, url}
 }
@@ -45,6 +50,8 @@ export function updateTeamPlayers (data, url) {
 }
 
 
+
+//handling error/loading
 export function handleError(bool) {
          return {
           type: ERROR,
@@ -59,13 +66,24 @@ export function handleLoading(bool) {
          }
 }
 
+
+
+//resetting data
 export function reset() {
          return {
           type: RESET
          }
 }
 
-//action creator with redux thunk
+
+//for finding teams
+export function getTeams (teams) {
+  console.log('test');
+    return {type: GETTEAMS, teams }
+}
+
+
+//action creators with redux thunk
 export function update (urls) {
   return (dispatch) => {
         dispatch(handleLoading(true));
@@ -93,4 +111,18 @@ export function update (urls) {
          .then(()=> dispatch(handleLoading(false)))
          .catch(() =>{dispatch(handleLoading(false)); dispatch(handleError(true));})
   } 
+}
+
+
+export function getLeague (url) { 
+    return (dispatch,getState) => {
+      fetch(url, {
+  		headers: {
+         		'X-Auth-Token': '93ec85906d8a472894cad03fdadb19b9'
+  			}
+		})
+    .then((response)=>response.json())
+    .then((data) => dispatch(getTeams(data.teams)))
+    .then(console.log(getState()))
+    }
 }
