@@ -33,7 +33,7 @@ function teamNames (state = initialState, action) {
     switch (action.type) {
         case 'GETTEAMS':
       return Object.assign({}, state, {
-        teamNames: [action.teams]
+        teamNames: action.teams
       })
         default:
             return state;

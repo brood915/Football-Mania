@@ -7,7 +7,6 @@ const Saved_Favorite = (props) => {
     const getLeague = (e) => {
         let league = e.target.value;
         props.getLeague('https://api.football-data.org/v1/competitions/' + league + '/teams');
-        console.log(props.teamNames);
     }
     
     return (

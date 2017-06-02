@@ -78,7 +78,6 @@ export function reset() {
 
 //for finding teams
 export function getTeams (teams) {
-  console.log('test');
     return {type: GETTEAMS, teams }
 }
 
@@ -115,7 +114,7 @@ export function update (urls) {
 
 
 export function getLeague (url) { 
-    return (dispatch,getState) => {
+    return (dispatch) => {
       fetch(url, {
   		headers: {
          		'X-Auth-Token': '93ec85906d8a472894cad03fdadb19b9'
@@ -123,6 +122,6 @@ export function getLeague (url) {
 		})
     .then((response)=>response.json())
     .then((data) => dispatch(getTeams(data.teams)))
-    .then(console.log(getState()))
+    .catch(() =>dispatch(handleError(true)))
     }
 }
