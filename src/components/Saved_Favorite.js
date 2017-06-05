@@ -30,7 +30,7 @@ const Saved_Favorite = (props) => {
                     <ControlLabel>Select a team</ControlLabel>
                     <FormControl componentClass="select" placeholder="select" data-type='teams'>
                         <option defaultValue>Find your team!</option>
-                        {props.teamNames.length > 0 && props.teamNames.map((each,index)=>(
+                        {props.teamNames && props.teamNames.map((each,index)=>(
 		        	<option key = {index.toString()} value = {each['_links'].self.href}>{each.name}</option>))}
                     </FormControl>
                 </FormGroup>

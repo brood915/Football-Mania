@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeLeague, removeTeam, update, reset, getLeague } from '../actions/actions';
+import { removeLeague, removeTeam, update, reset, getLeague, handleError } from '../actions/actions';
 import Teams_Info from '../components/Teams_Info';
 import Leagues_Fixtures from '../components/Leagues_Fixtures';
 import Leagues_Table from '../components/Leagues_Table';
@@ -92,7 +92,10 @@ else if (this.props.loading) { //if loading
 }
 
 else if (this.props.error) { //if error occured
- return <h1 className='mainContent'>Something Went Wrong!!</h1>
+ return <div className='mainContent'>
+ <h1>Something Went Wrong!!</h1>
+ <Button onClick={()=>this.props.handleError(false)}>Try again</Button>
+ </div>
 }
 
 
@@ -112,7 +115,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({ removeLeague, removeTeam, update, reset, getLeague }, dispatch); 
+   return bindActionCreators({ removeLeague, removeTeam, update, reset, getLeague, handleError }, dispatch); 
 };
 
 
