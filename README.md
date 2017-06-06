@@ -5,6 +5,7 @@ Allows users to search for league/tournament tables and players' stats,
 and to save them to the local storage so they can see what they want all at once on the same page.
 
 [[Plans for the future]]
+Refactor with redux for all data management
 Add user authentication
 Use express and mongodb instead of local storage
 Find free API for players
