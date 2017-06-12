@@ -25,7 +25,6 @@ const Header = () => (
 	      <IndexLinkContainer to="/"><NavItem>Home</NavItem></IndexLinkContainer>
 	      <LinkContainer to="/leagues"><NavItem>Leagues</NavItem></LinkContainer>
 	      <LinkContainer to="/teams"><NavItem>Teams</NavItem></LinkContainer>
-	      <LinkContainer to="/players"><NavItem>Players</NavItem></LinkContainer>
 	      <LinkContainer to="/saved"><NavItem>Saved</NavItem></LinkContainer>
 	    </Nav>
 	    </Navbar.Collapse>
