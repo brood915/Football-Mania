@@ -34,7 +34,6 @@ class MainContainer extends React.Component {
 		})
 		.then((response) => response.json())
 		.then((json) => this.setState({[state]: json}))
-		.then(()=>console.log(this.state[state]))
 		.catch((err) => console.log('Could not fetch the data!', err))
 	}
 

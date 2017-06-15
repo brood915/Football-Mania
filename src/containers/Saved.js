@@ -37,7 +37,6 @@ class Saved extends React.Component {
         const teamPlayersURLs = this.props.teams.map(each=>each.teamInfo['_links'].players.href);
         const urls = [...leagueURLs, ...teamFixturesURLs, ...teamPlayersURLs];
        this.props.update(urls);
-       console.log(this.props.teams);
   }
 
   handleChange (e) {
