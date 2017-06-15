@@ -76,11 +76,6 @@ export function reset() {
 }
 
 
-//for finding teams
-export function getTeams (teams) {
-    return {type: GETTEAMS, teams }
-}
-
 
 //action creators with redux thunk
 export function update (urls) {
@@ -110,18 +105,4 @@ export function update (urls) {
          .then(()=> dispatch(handleLoading(false)))
          .catch(() =>{dispatch(handleLoading(false)); dispatch(handleError(true));})
   } 
-}
-
-
-export function getLeague (url) { 
-    return (dispatch) => {
-      fetch(url, {
-  		headers: {
-         		'X-Auth-Token': '93ec85906d8a472894cad03fdadb19b9'
-  			}
-		})
-    .then((response)=>response.json())
-    .then((data) => dispatch(getTeams(data.teams)))
-    .catch(() =>dispatch(handleError(true)))
-    }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeLeague, removeTeam, update, reset, getLeague, handleError } from '../actions/actions';
+import { removeLeague, removeTeam, update, reset, handleError } from '../actions/actions';
 import Teams_Info from '../components/Teams_Info';
 import Leagues_Fixtures from '../components/Leagues_Fixtures';
 import Leagues_Table from '../components/Leagues_Table';
@@ -10,7 +10,6 @@ import Teams_Fixtures from '../components/Teams_Fixtures';
 import Teams_Players from '../components/Teams_Players';
 import Saved_Filter from '../components/Saved_Filter';
 import Saved_Modal from '../components/Saved_Modal';
-import Saved_Favorite from '../components/Saved_Favorite';
 import { Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 
@@ -80,7 +79,7 @@ if (!this.props.loading && !this.props.error)//if not loading
             <Teams_Info removeTeam = {this.props.removeTeam} teamPlayers = {each.teamPlayers} teamFixtures = {each.teamFixtures} index = {each.index} saved = 'true' key = {index.toString()} data = {each.teamInfo}/>))}
     </div>}
     {this.props.leagues.length === 0 && this.props.teams.length === 0 && //when no data saved
-      <Saved_Favorite getLeague = {this.props.getLeague} teamNames = {this.props.teamNames} />
+     <h3>Add your favorite data!</h3>
     }
   </div>
 )}
@@ -108,14 +107,13 @@ const mapStateToProps = (state) => {
     leagues: state.leagues.leagues,
     teams: state.teams.teams,
     loading: state.handleLoading,
-    error: state.handleError,
-    teamNames: state.teamNames.teamNames
+    error: state.handleError
    };
 };
 
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({ removeLeague, removeTeam, update, reset, getLeague, handleError }, dispatch); 
+   return bindActionCreators({ removeLeague, removeTeam, update, reset, handleError }, dispatch); 
 };
 
 

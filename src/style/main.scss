@@ -23,16 +23,16 @@ mixins and variables
 General, containers
 ******/
 
-body, html, #app, #main {
+body, html, #app, #main, #hash {
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	height:100%;
 	color: #000000;
 	font-family: 'Lato', sans-serif;
 	text-align:center;
 }
 
-.mainContent {
+.mainContent, #hash {
 	min-height: 100%;
 	@include center ();
 }
