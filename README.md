@@ -18,7 +18,6 @@ Write algorithms to suggest a player to users
 ```
 npm install to install all dependencies
 npm start to start webpack-dev-server
-npm test for testing
 server running at localhost:1337
 npm run build for production
 ```
