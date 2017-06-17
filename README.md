@@ -1,4 +1,4 @@
-# Website for Football Fans
+# Website for Football Fans. Build with react, redux, and react-router.
 
 ```
 Allows users to search for league/tournament tables and players' stats, 
