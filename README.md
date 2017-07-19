@@ -6,7 +6,7 @@ and to save them to the local storage so they can see what they want all at once
 
 Built with react, redux, and react-router.
 
-###  Plans for the future
+[Plans for the future]
 # Refactor with redux for all data management
 # Add user authentication
 # Use express and mongodb instead of local storage
