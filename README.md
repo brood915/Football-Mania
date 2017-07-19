@@ -17,7 +17,7 @@ Built with react, redux, and react-router.
 
 ### Quick start
 ```bash
-# clone our repo
+# clone repo
 $ git clone https://github.com/brood915/Football-Mania.git
 
 # change directory to the app
