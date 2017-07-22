@@ -12,6 +12,9 @@ Built with react, redux, and react-router.
 # Use express and mongodb instead of local storage
 # Find free API for players
 # Write algorithms to suggest a player to users
+
+
+Note: The API used for this app is not perfect..
 ```
 
 
