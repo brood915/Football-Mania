@@ -2,7 +2,8 @@
 
 ```
 Allows users to search for league/tournament tables and players' stats, 
-and to save them to the local storage so they can see what they want all at once on the same page.
+and to save them to the local storage so they can see what they want all at once on ONE same page.
+The data saved get updated automatically whenever users revisit the page.
 
 Built with react, redux, and react-router.
 
